@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="cardCornerRagius">7dp</dimen>
+    <dimen name="cardELevation">6dp</dimen>
+    <dimen name="cardHeight">310dp</dimen>
+    <dimen name="tvCardViewTitleHeight">50dp</dimen>
+    <dimen name="ivCardViewImageHeaderHeight">250dp</dimen>
+    <dimen name="rlCardViewInternalLayoutHeight">300dp</dimen>
+    <dimen name="marginCard">4dp</dimen>
+</resources>
