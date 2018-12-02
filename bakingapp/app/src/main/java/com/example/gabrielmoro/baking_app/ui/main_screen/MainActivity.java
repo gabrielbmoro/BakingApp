@@ -1,4 +1,4 @@
-package com.example.gabrielmoro.baking_app.ui;
+package com.example.gabrielmoro.baking_app.ui.main_screen;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;

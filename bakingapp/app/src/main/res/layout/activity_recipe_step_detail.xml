@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.recipe_detail_screen.recipe_step_detail_screen.RecipeStepDetailActivity">
+    tools:context=".ui.main_screen.recipe_detail_screen.recipe_step_detail_screen.RecipeStepDetailActivity">
 
     <include layout="@layout/layout_step_content" />
 

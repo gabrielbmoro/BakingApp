@@ -4,6 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.recipe_detail_screen.RecipeDetailActivity">
+    tools:context=".ui.main_screen.recipe_detail_screen.RecipeDetailActivity">
 
 </android.support.constraint.ConstraintLayout>
