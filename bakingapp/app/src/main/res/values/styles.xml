@@ -16,4 +16,26 @@
         <item name="android:paddingEnd">0dp</item>
     </style>
 
+    <style name="TextAppearance.AppCompat.Large.CardTitleCenter" parent="TextAppearance.AppCompat.Large">
+        <item name="android:gravity">bottom|center_horizontal</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textAllCaps">true</item>
+    </style>
+
+    <style name="TextAppearance.AppCompat.Large.CardSubTitleCenter" parent="TextAppearance.AppCompat.Large">
+        <item name="android:gravity">top|center_horizontal</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+
+    <style name="TextAppearance.AppCompat.Display1.Center" parent="TextAppearance.AppCompat.Display1">
+        <item name="android:gravity">center_horizontal|center_vertical</item>
+        <item name="android:padding">1dp</item>
+    </style>
+
+    <style name="TextAppearance.AppCompat.Display1.Center.Bold" parent="TextAppearance.AppCompat.Display1.Center">
+        <item name="android:textStyle">bold</item>
+    </style>
+
 </resources>

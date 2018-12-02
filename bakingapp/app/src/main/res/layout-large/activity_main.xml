@@ -5,12 +5,13 @@
     android:layout_height="match_parent"
     tools:context=".ui.MainActivity">
 
-
-    <ListView
-        android:id="@+id/lvRecipes"
+    <GridView
+        android:id="@+id/gvRecipes"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_margin="@dimen/externalMarginCard"
+        android:numColumns="3"
         tools:listitem="@layout/layout_recipe_item" />
+
 
 </RelativeLayout>

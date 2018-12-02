@@ -3,8 +3,11 @@
     <dimen name="cardCornerRagius">7dp</dimen>
     <dimen name="cardELevation">6dp</dimen>
     <dimen name="cardHeight">310dp</dimen>
+    <dimen name="cardSmallHeight">150dp</dimen>
     <dimen name="tvCardViewTitleHeight">50dp</dimen>
     <dimen name="ivCardViewImageHeaderHeight">250dp</dimen>
     <dimen name="rlCardViewInternalLayoutHeight">300dp</dimen>
+    <dimen name="llDescriptionHeight">180dp</dimen>
     <dimen name="marginCard">4dp</dimen>
+    <dimen name="externalMarginCard">12dp</dimen>
 </resources>

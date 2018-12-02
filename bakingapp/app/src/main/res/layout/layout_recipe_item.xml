@@ -4,14 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="@dimen/cardHeight"
+    android:layout_margin="@dimen/externalMarginCard"
     app:cardCornerRadius="@dimen/cardCornerRagius"
-    android:layout_margin="@dimen/marginCard"
     app:cardElevation="@dimen/cardELevation">
 
     <RelativeLayout
-        android:layout_gravity="center"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/rlCardViewInternalLayoutHeight">
+        android:layout_height="@dimen/rlCardViewInternalLayoutHeight"
+        android:layout_gravity="center">
 
         <ImageView
             android:id="@+id/imageView"
@@ -21,9 +21,9 @@
             android:src="@drawable/recipes_image_place_holder" />
 
         <TextView
+            style="@style/TextAppearance.AppCompat.Large.CardTitle"
             android:layout_width="match_parent"
             android:layout_height="@dimen/tvCardViewTitleHeight"
-            style="@style/TextAppearance.AppCompat.Large.CardTitle"
             android:layout_alignParentBottom="true"
             tools:text="Nutella Pie" />
     </RelativeLayout>
