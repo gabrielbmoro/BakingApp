@@ -17,6 +17,7 @@ import com.example.gabrielmoro.baking_app.model.Recipe;
 import com.example.gabrielmoro.baking_app.ui.base.base_adapter.GeneralBaseAdapter;
 import com.example.gabrielmoro.baking_app.ui.base.base_adapter.ViewContractBaseAdapter;
 import com.example.gabrielmoro.baking_app.ui.base.base_adapter.ViewTypes;
+import com.example.gabrielmoro.baking_app.ui.main_screen.recipe_detail_screen.RecipeDetailActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -65,8 +66,15 @@ public class MainActivity extends AppCompatActivity {
                 getLayoutInflater(),
                 new ViewContractBaseAdapter<Recipe>() {
                     @Override
-                    public void bindView(@NonNull Recipe item, @NonNull View view) {
+                    public void bindView(final @NonNull Recipe item, @NonNull View view) {
                         ((TextView) view.findViewById(R.id.tvRecipeName)).setText(item.getName());
+                        view.getRootView().setOnClickListener(
+                                new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View v) {
+                                        RecipeDetailActivity.startActivity(v.getContext(), item);
+                                    }
+                                });
                     }
                 }));
     }
