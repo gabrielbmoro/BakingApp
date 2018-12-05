@@ -9,10 +9,39 @@
             type="com.example.gabrielmoro.baking_app.ui.main_screen.recipe_detail_screen.RecipeViewModel" />
     </data>
 
-    <android.support.constraint.ConstraintLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:weightSum="3"
         tools:context=".ui.main_screen.recipe_detail_screen.RecipeDetailActivity">
 
-    </android.support.constraint.ConstraintLayout>
+        <ListView
+            android:id="@+id/lvIngredients"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginBottom="8dp"
+            android:layout_weight="2"
+            android:adapter="@{viewModel.recipeBaseObservable.ingredientListAdapter}"
+            tools:listitem="@layout/layout_ingredient_item" />
+
+        <ListView
+            android:id="@+id/lvSteps"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginBottom="16dp"
+            android:layout_weight="1"
+            android:adapter="@{viewModel.recipeBaseObservable.stepListAdapter}"
+            tools:listitem="@layout/layout_step_item" />
+    </LinearLayout>
 </layout>

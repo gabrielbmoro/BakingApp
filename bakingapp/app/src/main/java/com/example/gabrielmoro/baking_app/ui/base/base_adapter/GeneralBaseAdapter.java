@@ -73,6 +73,8 @@ public class GeneralBaseAdapter<T> extends BaseAdapter {
                 return R.layout.layout_recipe_item;
             case STEP_ITEM:
                 return R.layout.layout_step_item;
+            case INGREDIENT_ITEM:
+                return R.layout.layout_ingredient_item;
             case UNKNOW:
                 return R.layout.unknow_layout_item;
             default:

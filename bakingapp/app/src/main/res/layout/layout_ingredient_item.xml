@@ -17,7 +17,7 @@
             android:id="@+id/imageView"
             android:layout_width="wrap_content"
             android:layout_height="@dimen/rlCardViewInternalLayoutHeight"
-            android:scaleType="fitCenter"
+            android:scaleType="centerCrop"
             android:src="@drawable/ingredient_place_holder_image" />
 
         <LinearLayout
@@ -28,6 +28,7 @@
             android:weightSum="3">
 
             <TextView
+                android:id="@+id/tvIngredientName"
                 style="@style/TextAppearance.AppCompat.Large.CardTitleCenter"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/tvCardViewTitleHeight"
@@ -36,6 +37,7 @@
                 tools:text="Vanilha" />
 
             <TextView
+                android:id="@+id/tvIngredientAmount"
                 style="@style/TextAppearance.AppCompat.Large.CardSubTitleCenter"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/tvCardViewTitleHeight"

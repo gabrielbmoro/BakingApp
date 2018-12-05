@@ -1,23 +1,30 @@
 package com.example.gabrielmoro.baking_app.ui.main_screen.recipe_detail_screen;
 
-import com.example.gabrielmoro.baking_app.BR;
-
 import android.databinding.BaseObservable;
 import android.databinding.Bindable;
 
-import com.example.gabrielmoro.baking_app.model.Recipe;
+import com.example.gabrielmoro.baking_app.model.Ingredient;
+import com.example.gabrielmoro.baking_app.model.Step;
+import com.example.gabrielmoro.baking_app.ui.base.base_adapter.GeneralBaseAdapter;
 
 public class RecipeBaseObservable extends BaseObservable {
 
-    private Recipe recipeTarget;
+    private GeneralBaseAdapter<Step> stepListAdapter;
+    private GeneralBaseAdapter<Ingredient> ingredientListAdapter;
 
-    public Recipe getRecipeTarget() {
-        return recipeTarget;
+
+    public RecipeBaseObservable(GeneralBaseAdapter<Step> stepListAdapterArgument,
+                                GeneralBaseAdapter<Ingredient> ingredientListAdapterArgument) {
+        this.stepListAdapter = stepListAdapterArgument;
+        this.ingredientListAdapter = ingredientListAdapterArgument;
     }
 
-    @Bindable
-    public void setRecipeTarget(Recipe recipeTarget) {
-        this.recipeTarget = recipeTarget;
-        notifyPropertyChanged(BR.recipeTarget);
+
+    public GeneralBaseAdapter<Step> getStepListAdapter() {
+        return stepListAdapter;
+    }
+
+    public GeneralBaseAdapter<Ingredient> getIngredientListAdapter() {
+        return ingredientListAdapter;
     }
 }

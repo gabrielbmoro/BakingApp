@@ -31,6 +31,8 @@
 
     <style name="TextAppearance.AppCompat.Display1.Center" parent="TextAppearance.AppCompat.Display1">
         <item name="android:gravity">center_horizontal|center_vertical</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textStyle">bold</item>
         <item name="android:padding">1dp</item>
     </style>
 
