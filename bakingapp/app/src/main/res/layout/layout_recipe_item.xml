@@ -1,32 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="@dimen/cardHeight"
-    android:layout_margin="@dimen/externalMarginCard"
-    app:cardCornerRadius="@dimen/cardCornerRagius"
-    app:cardElevation="@dimen/cardELevation">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <RelativeLayout
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.example.gabrielmoro.baking_app.ui.main_screen.RecipeItemViewModel" />
+    </data>
+
+    <android.support.v7.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="@dimen/rlCardViewInternalLayoutHeight"
-        android:layout_gravity="center">
+        android:layout_height="@dimen/cardHeight"
+        android:layout_margin="@dimen/externalMarginCard"
+        app:cardCornerRadius="@dimen/cardCornerRagius"
+        android:onClick="@{(view) -> viewModel.click(view)}"
+        app:cardElevation="@dimen/cardELevation">
 
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="wrap_content"
-            android:layout_height="@dimen/ivCardViewImageHeaderHeight"
-            android:scaleType="centerCrop"
-            android:src="@drawable/recipes_image_place_holder" />
-
-        <TextView
-            style="@style/TextAppearance.AppCompat.Large.CardTitle"
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="@dimen/tvCardViewTitleHeight"
-            android:layout_alignParentBottom="true"
-            android:id="@+id/tvRecipeName"
-            tools:text="Nutella Pie" />
-    </RelativeLayout>
-</android.support.v7.widget.CardView>
+            android:layout_height="@dimen/rlCardViewInternalLayoutHeight"
+            android:layout_gravity="center">
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/ivCardViewImageHeaderHeight"
+                android:scaleType="centerCrop"
+                android:src="@drawable/recipes_image_place_holder" />
+
+            <TextView
+                android:id="@+id/tvRecipeName"
+                style="@style/TextAppearance.AppCompat.Large.CardTitle"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/tvCardViewTitleHeight"
+                android:layout_alignParentBottom="true"
+                android:text="@{viewModel.title}"
+                tools:text="Nutella Pie" />
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>
+</layout>

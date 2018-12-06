@@ -5,30 +5,35 @@ import android.databinding.Bindable;
 
 import com.example.gabrielmoro.baking_app.BR;
 import com.example.gabrielmoro.baking_app.model.Recipe;
-import com.example.gabrielmoro.baking_app.ui.base.base_adapter.GeneralBaseAdapter;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class MainBaseObservable extends BaseObservable {
 
-    private GeneralBaseAdapter<Recipe> mainViewAdapter;
+    private RecipeAdapterList mainViewAdapter;
 
-    MainBaseObservable(GeneralBaseAdapter<Recipe> baseAdapter) {
+    MainBaseObservable(RecipeAdapterList baseAdapter) {
         mainViewAdapter = baseAdapter;
     }
 
     @Bindable
     void setRecipesData(List<Recipe> recipes) {
-        mainViewAdapter.onUpdateAllElements(recipes);
+        List<RecipeItemViewModel> viewModels = new ArrayList<>();
+        RecipeItemViewModel viewModelTmp;
+        for (Recipe recipe : recipes) {
+            viewModelTmp = new RecipeItemViewModel();
+            viewModelTmp.setup(recipe);
+            viewModels.add(viewModelTmp);
+        }
+
+        mainViewAdapter.onUpdateAllElements(viewModels);
         notifyPropertyChanged(BR.recipesData);
     }
 
-    public GeneralBaseAdapter<Recipe> getGeneralRecipe() {
+    public RecipeAdapterList getGeneralRecipe() {
         return mainViewAdapter;
     }
-
-
-
 
 
 }

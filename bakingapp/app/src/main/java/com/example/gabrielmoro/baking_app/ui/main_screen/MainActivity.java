@@ -2,22 +2,15 @@ package com.example.gabrielmoro.baking_app.ui.main_screen;
 
 import android.arch.lifecycle.ViewModelProviders;
 import android.databinding.DataBindingUtil;
-import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
-import android.widget.TextView;
 
 import com.example.gabrielmoro.baking_app.R;
 import com.example.gabrielmoro.baking_app.api.APICallBackResult;
 import com.example.gabrielmoro.baking_app.api.APIRetrofitHandler;
 import com.example.gabrielmoro.baking_app.databinding.ActivityMainBinding;
 import com.example.gabrielmoro.baking_app.model.Recipe;
-import com.example.gabrielmoro.baking_app.ui.base.base_adapter.GeneralBaseAdapter;
-import com.example.gabrielmoro.baking_app.ui.base.base_adapter.ViewContractBaseAdapter;
-import com.example.gabrielmoro.baking_app.ui.base.base_adapter.ViewTypes;
-import com.example.gabrielmoro.baking_app.ui.main_screen.recipe_detail_screen.RecipeDetailActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -61,21 +54,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
 
-        viewModel.setup(new GeneralBaseAdapter<>(new ArrayList<Recipe>(),
-                ViewTypes.RECIPE_ITEM,
-                getLayoutInflater(),
-                new ViewContractBaseAdapter<Recipe>() {
-                    @Override
-                    public void bindView(final @NonNull Recipe item, @NonNull View view) {
-                        ((TextView) view.findViewById(R.id.tvRecipeName)).setText(item.getName());
-                        view.getRootView().setOnClickListener(
-                                new View.OnClickListener() {
-                                    @Override
-                                    public void onClick(View v) {
-                                        RecipeDetailActivity.startActivity(v.getContext(), item);
-                                    }
-                                });
-                    }
-                }));
+        viewModel.setup(new RecipeAdapterList(new ArrayList<RecipeItemViewModel>(), getLayoutInflater()));
     }
 }

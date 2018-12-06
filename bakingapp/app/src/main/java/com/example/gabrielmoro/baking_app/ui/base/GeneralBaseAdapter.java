@@ -1,28 +1,26 @@
-package com.example.gabrielmoro.baking_app.ui.base.base_adapter;
+package com.example.gabrielmoro.baking_app.ui.base;
 
 import android.annotation.SuppressLint;
+import android.databinding.DataBindingUtil;
+import android.databinding.ViewDataBinding;
 import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 
-import com.example.gabrielmoro.baking_app.R;
+import com.example.gabrielmoro.baking_app.BR;
 
 import java.util.List;
 
-public class GeneralBaseAdapter<T> extends BaseAdapter {
+public abstract class GeneralBaseAdapter<T> extends BaseAdapter {
 
     private List<T> elements;
     private LayoutInflater inflater;
-    private ViewTypes viewType;
-    private ViewContractBaseAdapter contract;
 
-    public GeneralBaseAdapter(@NonNull List<T> aLstElements, ViewTypes aViewType, LayoutInflater aInflater, @NonNull ViewContractBaseAdapter aContract) {
+    public GeneralBaseAdapter(@NonNull List<T> aLstElements, LayoutInflater aInflater) {
         elements = aLstElements;
         inflater = aInflater;
-        viewType = aViewType;
-        contract = aContract;
     }
 
     public void onUpdateAllElements(@NonNull List<T> newList) {
@@ -61,25 +59,16 @@ public class GeneralBaseAdapter<T> extends BaseAdapter {
         T item = this.elements.get(position);
 
         if (item != null) {
-            contract.bindView(item, view);
+            ViewDataBinding dataBinding = DataBindingUtil.bind(view);
+            if (dataBinding != null) {
+                dataBinding.setVariable(BR.viewModel, item);
+                dataBinding.executePendingBindings();
+            }
         }
         return view;
     }
 
 
-    private int getLayoutResourceAccordingViewType() {
-        switch (viewType) {
-            case RECIPE_ITEM:
-                return R.layout.layout_recipe_item;
-            case STEP_ITEM:
-                return R.layout.layout_step_item;
-            case INGREDIENT_ITEM:
-                return R.layout.layout_ingredient_item;
-            case UNKNOW:
-                return R.layout.unknow_layout_item;
-            default:
-                return R.layout.unknow_layout_item;
-        }
-    }
+    protected abstract int getLayoutResourceAccordingViewType();
 
 }

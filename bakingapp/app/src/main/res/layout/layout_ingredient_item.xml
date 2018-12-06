@@ -1,52 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="@dimen/cardHeight"
-    android:layout_margin="@dimen/marginCard"
-    app:cardCornerRadius="@dimen/cardCornerRagius"
-    app:cardElevation="@dimen/cardELevation">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <RelativeLayout
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.example.gabrielmoro.baking_app.ui.main_screen.recipe_detail_screen.IngredientViewModel" />
+    </data>
+
+    <android.support.v7.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="@dimen/rlCardViewInternalLayoutHeight"
-        android:layout_gravity="center">
+        android:layout_height="@dimen/cardHeight"
+        android:layout_margin="@dimen/marginCard"
+        app:cardCornerRadius="@dimen/cardCornerRagius"
+        app:cardElevation="@dimen/cardELevation">
 
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="wrap_content"
-            android:layout_height="@dimen/rlCardViewInternalLayoutHeight"
-            android:scaleType="centerCrop"
-            android:src="@drawable/ingredient_place_holder_image" />
-
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="@dimen/llDescriptionHeight"
-            android:layout_centerVertical="true"
-            android:orientation="vertical"
-            android:weightSum="3">
+            android:layout_height="@dimen/rlCardViewInternalLayoutHeight"
+            android:layout_gravity="center">
 
-            <TextView
-                android:id="@+id/tvIngredientName"
-                style="@style/TextAppearance.AppCompat.Large.CardTitleCenter"
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/rlCardViewInternalLayoutHeight"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ingredient_place_holder_image" />
+
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/tvCardViewTitleHeight"
-                android:layout_weight="2"
-                android:padding="12dp"
-                tools:text="Vanilha" />
+                android:layout_height="@dimen/llDescriptionHeight"
+                android:layout_centerVertical="true"
+                android:orientation="vertical"
+                android:weightSum="3">
 
-            <TextView
-                android:id="@+id/tvIngredientAmount"
-                style="@style/TextAppearance.AppCompat.Large.CardSubTitleCenter"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/tvCardViewTitleHeight"
-                android:layout_weight="1"
-                android:padding="6dp"
-                tools:text="0.5 CUP" />
+                <TextView
+                    android:id="@+id/tvIngredientName"
+                    style="@style/TextAppearance.AppCompat.Large.CardTitleCenter"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/tvCardViewTitleHeight"
+                    android:layout_weight="2"
+                    android:padding="12dp"
+                    android:text="@{viewModel.description}"
+                    tools:text="Vanilha" />
 
-        </LinearLayout>
+                <TextView
+                    android:id="@+id/tvIngredientAmount"
+                    style="@style/TextAppearance.AppCompat.Large.CardSubTitleCenter"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/tvCardViewTitleHeight"
+                    android:layout_weight="1"
+                    android:padding="6dp"
+                    android:text="@{viewModel.amount}"
+                    tools:text="0.5 CUP" />
+
+            </LinearLayout>
 
 
-    </RelativeLayout>
-</android.support.v7.widget.CardView>
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>
+</layout>
