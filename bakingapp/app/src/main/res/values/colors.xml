@@ -7,4 +7,8 @@
     <color name="ingredientColor">#d5fffd</color>
     <color name="ingredientTextColor">#224c56</color>
     <color name="colorLowAccent">#ca93a7</color>
+    <color name="stepColor">#edf1ce</color>
+    <color name="stepTextColor">#f9b200</color>
+    <color name="stepTextColor2">#804c1f</color>
+
 </resources>
