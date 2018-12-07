@@ -9,6 +9,10 @@ import com.google.gson.annotations.SerializedName;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * I use the JsonSchema2Pojo to define the pojo according to server response.
+ * Reference: http://www.jsonschema2pojo.org/
+ */
 public class Recipe implements Parcelable {
     @SerializedName("id")
     @Expose
@@ -68,14 +72,6 @@ public class Recipe implements Parcelable {
 
     public void setSteps(ArrayList<Step> steps) {
         this.steps = steps;
-    }
-
-    public Integer getServings() {
-        return servings;
-    }
-
-    public void setServings(Integer servings) {
-        this.servings = servings;
     }
 
     public String getImage() {

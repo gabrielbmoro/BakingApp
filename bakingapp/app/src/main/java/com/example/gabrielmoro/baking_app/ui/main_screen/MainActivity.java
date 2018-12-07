@@ -4,7 +4,6 @@ import android.arch.lifecycle.ViewModelProviders;
 import android.databinding.DataBindingUtil;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 
 import com.example.gabrielmoro.baking_app.R;
 import com.example.gabrielmoro.baking_app.api.APICallBackResult;
@@ -17,11 +16,24 @@ import com.example.gabrielmoro.baking_app.ui.main_screen.viewmodel.RecipeItemVie
 import java.util.ArrayList;
 import java.util.List;
 
+import timber.log.Timber;
+
+/**
+ * This is the main screen that list all recipts.
+ */
 public class MainActivity extends AppCompatActivity {
 
     public static final String TAG = "MainActivity";
     private MainViewModel viewModel;
 
+    public MainActivity() {
+        Timber.tag(TAG);
+    }
+
+    /**
+     * To create the databinding calls I use the follow reference.
+     * Reference: https://developer.android.com/topic/libraries/data-binding/expressions?hl=pt-br
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,19 +47,19 @@ public class MainActivity extends AppCompatActivity {
             public void onSucess(List<Recipe> result) {
                 if (result != null) {
                     viewModel.setRecipesData(result);
-                    Log.d(TAG, "onSucess: " + result.toString());
+                    Timber.d("onSucess: " + result.toString());
                 }
             }
 
             @Override
             public void onFailure(Throwable problem) {
                 if (problem != null)
-                    Log.d(TAG, "onFailure: " + problem.toString());
+                    Timber.d("onFailure: %s", problem.toString());
             }
 
             @Override
             public void onCompleted() {
-                Log.d(TAG, "onCompleted: 100%");
+                Timber.d("onCompleted: 100%");
             }
         });
     }

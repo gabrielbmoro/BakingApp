@@ -12,6 +12,11 @@ import rx.functions.Action0;
 import rx.functions.Action1;
 import rx.schedulers.Schedulers;
 
+/**
+ * Provides the retrofit api service to send
+ * requests to the server.
+ * Reference: https://medium.com/3xplore/handling-api-calls-using-retrofit-2-and-rxjava-2-1871c891b6ae
+ */
 public class APIRetrofitHandler {
 
     private static final String BASE_URL = "https://d17h27t6h515a5.cloudfront.net/topher/2017/May/";

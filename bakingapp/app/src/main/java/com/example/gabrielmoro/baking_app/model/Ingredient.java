@@ -6,6 +6,10 @@ import android.os.Parcelable;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+/**
+ * I use the JsonSchema2Pojo to define the pojo according to server response.
+ * Reference: http://www.jsonschema2pojo.org/
+ */
 public class Ingredient implements Parcelable {
 
     @SerializedName("quantity")
@@ -40,24 +44,12 @@ public class Ingredient implements Parcelable {
         return quantity;
     }
 
-    public void setQuantity(Double quantity) {
-        this.quantity = quantity;
-    }
-
     public String getMeasure() {
         return measure;
     }
 
-    public void setMeasure(String measure) {
-        this.measure = measure;
-    }
-
     public String getIngredient() {
         return ingredient;
-    }
-
-    public void setIngredient(String ingredient) {
-        this.ingredient = ingredient;
     }
 
     @Override

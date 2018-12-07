@@ -13,6 +13,11 @@ import com.example.gabrielmoro.baking_app.BR;
 
 import java.util.List;
 
+/**
+ * This is the general BaseAdapter, all adapters extend of this class.
+ *
+ * @param <T>
+ */
 public abstract class GeneralBaseAdapter<T> extends BaseAdapter {
 
     private List<T> elements;
@@ -43,6 +48,15 @@ public abstract class GeneralBaseAdapter<T> extends BaseAdapter {
         return position;
     }
 
+    /**
+     * To create the databinding call I use the follow reference:
+     * Reference: https://stackoverflow.com/questions/43973490/how-to-do-android-data-binding-a-customadapter-inherited-from-baseadapter-for-sp
+     *
+     * @param position    defines the element index at list
+     * @param convertView is the current view
+     * @param parent      is the parent view
+     * @return the current view with the information from the data object
+     */
     @SuppressLint("ViewHolder")
     @SuppressWarnings("unchecked")
     @Override
@@ -69,6 +83,11 @@ public abstract class GeneralBaseAdapter<T> extends BaseAdapter {
     }
 
 
+    /**
+     * This method allows to define the layout resource address in the subclasses.
+     *
+     * @return resource address
+     */
     protected abstract int getLayoutResourceAccordingViewType();
 
 }
