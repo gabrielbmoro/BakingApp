@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 
 import com.example.gabrielmoro.baking_app.R;
 import com.example.gabrielmoro.baking_app.ui.base.GeneralBaseAdapter;
+import com.example.gabrielmoro.baking_app.ui.main_screen.recipe_detail_screen.viewmodel.StepItemViewModel;
 
 import java.util.List;
 

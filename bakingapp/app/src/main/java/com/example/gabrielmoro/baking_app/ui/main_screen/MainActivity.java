@@ -11,6 +11,8 @@ import com.example.gabrielmoro.baking_app.api.APICallBackResult;
 import com.example.gabrielmoro.baking_app.api.APIRetrofitHandler;
 import com.example.gabrielmoro.baking_app.databinding.ActivityMainBinding;
 import com.example.gabrielmoro.baking_app.model.Recipe;
+import com.example.gabrielmoro.baking_app.ui.main_screen.viewmodel.MainViewModel;
+import com.example.gabrielmoro.baking_app.ui.main_screen.viewmodel.RecipeItemViewModel;
 
 import java.util.ArrayList;
 import java.util.List;

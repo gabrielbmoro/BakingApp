@@ -10,6 +10,7 @@ import android.os.Bundle;
 import com.example.gabrielmoro.baking_app.R;
 import com.example.gabrielmoro.baking_app.databinding.ActivityRecipeDetailBinding;
 import com.example.gabrielmoro.baking_app.model.Recipe;
+import com.example.gabrielmoro.baking_app.ui.main_screen.recipe_detail_screen.viewmodel.RecipeViewModel;
 
 public class RecipeDetailActivity extends AppCompatActivity {
 

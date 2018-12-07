@@ -1,6 +1,9 @@
-package com.example.gabrielmoro.baking_app.ui.main_screen.recipe_detail_screen;
+package com.example.gabrielmoro.baking_app.ui.main_screen.recipe_detail_screen.viewmodel;
 
 import android.databinding.BaseObservable;
+
+import com.example.gabrielmoro.baking_app.ui.main_screen.recipe_detail_screen.IngredientAdapterList;
+import com.example.gabrielmoro.baking_app.ui.main_screen.recipe_detail_screen.StepAdapterList;
 
 public class RecipeBaseObservable extends BaseObservable {
 

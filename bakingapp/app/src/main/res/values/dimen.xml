@@ -8,6 +8,6 @@
     <dimen name="ivCardViewImageHeaderHeight">125dp</dimen>
     <dimen name="rlCardViewInternalLayoutHeight">150dp</dimen>
     <dimen name="llDescriptionHeight">90dp</dimen>
-    <dimen name="marginCard">2dp</dimen>
+    <dimen name="marginCard">8dp</dimen>
     <dimen name="externalMarginCard">6dp</dimen>
 </resources>

@@ -1,10 +1,11 @@
-package com.example.gabrielmoro.baking_app.ui.main_screen;
+package com.example.gabrielmoro.baking_app.ui.main_screen.viewmodel;
 
 import android.databinding.BaseObservable;
 import android.databinding.Bindable;
 
 import com.example.gabrielmoro.baking_app.BR;
 import com.example.gabrielmoro.baking_app.model.Recipe;
+import com.example.gabrielmoro.baking_app.ui.main_screen.RecipeAdapterList;
 
 import java.util.ArrayList;
 import java.util.List;

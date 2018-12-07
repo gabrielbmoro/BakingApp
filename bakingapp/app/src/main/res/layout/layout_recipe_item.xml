@@ -7,35 +7,31 @@
 
         <variable
             name="viewModel"
-            type="com.example.gabrielmoro.baking_app.ui.main_screen.RecipeItemViewModel" />
+            type="com.example.gabrielmoro.baking_app.ui.main_screen.viewmodel.RecipeItemViewModel" />
     </data>
 
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="@dimen/cardHeight"
         android:layout_margin="@dimen/externalMarginCard"
-        app:cardCornerRadius="@dimen/cardCornerRagius"
         android:onClick="@{(view) -> viewModel.click(view)}"
+        app:cardCornerRadius="@dimen/cardCornerRagius"
         app:cardElevation="@dimen/cardELevation">
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="@dimen/rlCardViewInternalLayoutHeight"
-            android:layout_gravity="center">
-
-            <ImageView
-                android:id="@+id/imageView"
-                android:layout_width="wrap_content"
-                android:layout_height="@dimen/ivCardViewImageHeaderHeight"
-                android:scaleType="centerCrop"
-                android:src="@drawable/recipes_image_place_holder" />
+            android:layout_gravity="center"
+            android:background="@color/colorLowAccent"
+            android:onClick="@{(view) -> viewModel.click(view)}">
 
             <TextView
                 android:id="@+id/tvRecipeName"
-                style="@style/TextAppearance.AppCompat.Large.CardTitle"
+                style="@style/TextAppearance.AppCompat.Display1.Center.Bold"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/tvCardViewTitleHeight"
-                android:layout_alignParentBottom="true"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:onClick="@{(view) -> viewModel.click(view)}"
                 android:text="@{viewModel.title}"
                 tools:text="Nutella Pie" />
         </RelativeLayout>

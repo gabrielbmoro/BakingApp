@@ -1,8 +1,9 @@
-package com.example.gabrielmoro.baking_app.ui.main_screen;
+package com.example.gabrielmoro.baking_app.ui.main_screen.viewmodel;
 
 import android.arch.lifecycle.ViewModel;
 
 import com.example.gabrielmoro.baking_app.model.Recipe;
+import com.example.gabrielmoro.baking_app.ui.main_screen.RecipeAdapterList;
 
 import java.util.List;
 
@@ -10,11 +11,11 @@ public class MainViewModel extends ViewModel {
 
     private MainBaseObservable observableObjects;
 
-    void setup(RecipeAdapterList adapter) {
+    public void setup(RecipeAdapterList adapter) {
         observableObjects = new MainBaseObservable(adapter);
     }
 
-    void setRecipesData(List<Recipe> alstRecipes) {
+    public void setRecipesData(List<Recipe> alstRecipes) {
         observableObjects.setRecipesData(alstRecipes);
     }
 

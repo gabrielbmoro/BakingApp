@@ -1,10 +1,12 @@
-package com.example.gabrielmoro.baking_app.ui.main_screen.recipe_detail_screen;
+package com.example.gabrielmoro.baking_app.ui.main_screen.recipe_detail_screen.viewmodel;
 
 import android.arch.lifecycle.ViewModel;
 import android.view.LayoutInflater;
 
 import com.example.gabrielmoro.baking_app.model.Ingredient;
 import com.example.gabrielmoro.baking_app.model.Step;
+import com.example.gabrielmoro.baking_app.ui.main_screen.recipe_detail_screen.IngredientAdapterList;
+import com.example.gabrielmoro.baking_app.ui.main_screen.recipe_detail_screen.StepAdapterList;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,7 +15,7 @@ public class RecipeViewModel extends ViewModel {
 
     private RecipeBaseObservable recipeBaseObservable;
 
-    void setup(List<Step> steps, List<Ingredient> ingredients, LayoutInflater inflater) {
+    public void setup(List<Step> steps, List<Ingredient> ingredients, LayoutInflater inflater) {
         StepAdapterList stepAdapterList = new StepAdapterList(convertStepsInStepViewModels(steps), inflater);
         IngredientAdapterList ingredientAdapterList = new IngredientAdapterList(convertIngredientInIngredientViewModels(ingredients), inflater);
         recipeBaseObservable = new RecipeBaseObservable(stepAdapterList, ingredientAdapterList);

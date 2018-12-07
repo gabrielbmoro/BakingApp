@@ -23,8 +23,22 @@
         <item name="android:textAllCaps">true</item>
     </style>
 
+
+    <style name="TextAppearance.AppCompat.Large.CardTitleEnd" parent="TextAppearance.AppCompat.Large">
+        <item name="android:gravity">right|bottom|center_horizontal</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textAllCaps">true</item>
+    </style>
+
     <style name="TextAppearance.AppCompat.Large.CardSubTitleCenter" parent="TextAppearance.AppCompat.Large">
         <item name="android:gravity">top|center_horizontal</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+
+    <style name="TextAppearance.AppCompat.Large.CardSubTitleEnd" parent="TextAppearance.AppCompat.Large">
+        <item name="android:gravity">top|right|center_horizontal</item>
         <item name="android:textSize">16sp</item>
         <item name="android:textStyle">normal</item>
     </style>
@@ -38,6 +52,7 @@
 
     <style name="TextAppearance.AppCompat.Display1.Center.Bold" parent="TextAppearance.AppCompat.Display1.Center">
         <item name="android:textStyle">bold</item>
+        <item name="android:textSize">42sp</item>
     </style>
 
 </resources>
