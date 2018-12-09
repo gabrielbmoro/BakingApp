@@ -1,10 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.main_screen.recipe_detail_screen.recipe_step_detail_screen.RecipeStepDetailActivity">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <include layout="@layout/layout_step_content" />
+    <data>
 
-</RelativeLayout>
+        <variable
+            name="viewModel"
+            type="com.example.gabrielmoro.baking_app.ui.main_screen.recipe_detail_screen.viewmodel.IngredientViewModel" />
+    </data>
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.main_screen.recipe_detail_screen.recipe_step_detail_screen.RecipeStepDetailActivity">
+
+        <LinearLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <android.support.v7.widget.CardView
+                android:id="@+id/cvmedia"
+                android:layout_width="match_parent"
+                android:layout_height="400dp"
+                android:layout_margin="@dimen/marginCard"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginRight="16dp" />
+
+
+            <android.support.v7.widget.CardView
+                android:id="@+id/cvRecipeStepInstruction"
+                android:layout_width="match_parent"
+                android:layout_height="400dp"
+                android:layout_margin="@dimen/marginCard"
+                android:layout_marginTop="16dp"
+                app:cardCornerRadius="@dimen/cardCornerRagius"
+                app:cardElevation="@dimen/cardELevation" />
+
+            <RelativeLayout
+                android:id="@+id/rlFooter"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/ivPrevious"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_alignParentStart="true"
+                    android:src="@drawable/ic_baseline_skip_previous_24px"
+                    android:layout_alignParentLeft="true" />
+
+                <ImageView
+                    android:id="@+id/ivNext"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_alignParentEnd="true"
+                    android:src="@drawable/ic_baseline_skip_next_24px"
+                    android:layout_alignParentRight="true" />
+
+            </RelativeLayout>
+        </LinearLayout>
+
+    </ScrollView>
+
+</layout>
