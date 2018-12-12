@@ -6,20 +6,28 @@ import android.view.View;
 
 import com.example.gabrielmoro.baking_app.model.Step;
 import com.example.gabrielmoro.baking_app.ui.base.AdapterViewModels;
+import com.example.gabrielmoro.baking_app.ui.main_screen.recipe_detail_screen.recipe_step_detail_screen.RecipeStepDetailActivity;
 
 public class StepItemViewModel extends ViewModel implements AdapterViewModels<Step> {
 
     private String shortDescription = "";
     private String id = "";
+    private Step stepTarget;
 
     @Override
     public void setup(@NonNull Step step) {
-        shortDescription = step.getShortDescription();
-        id = String.valueOf(step.getId());
+        stepTarget = step;
+        fillTheFields();
+    }
+
+    private void fillTheFields() {
+        shortDescription = stepTarget.getShortDescription();
+        id = String.valueOf(stepTarget.getId());
     }
 
     @Override
     public void click(View view) {
+        RecipeStepDetailActivity.startActivity(view.getContext(), stepTarget);
     }
 
 

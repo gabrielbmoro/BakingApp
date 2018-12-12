@@ -6,7 +6,7 @@
 
         <variable
             name="viewModel"
-            type="com.example.gabrielmoro.baking_app.ui.main_screen.recipe_detail_screen.viewmodel.IngredientViewModel" />
+            type="com.example.gabrielmoro.baking_app.ui.main_screen.recipe_detail_screen.recipe_step_detail_screen.viewmodel.RecipeStepDetailViewModel" />
     </data>
 
 
@@ -37,11 +37,19 @@
             <android.support.v7.widget.CardView
                 android:id="@+id/cvRecipeStepInstruction"
                 android:layout_width="match_parent"
-                android:layout_height="400dp"
+                android:layout_height="wrap_content"
                 android:layout_margin="@dimen/marginCard"
                 android:layout_marginTop="16dp"
                 app:cardCornerRadius="@dimen/cardCornerRagius"
-                app:cardElevation="@dimen/cardELevation" />
+                app:cardElevation="@dimen/cardELevation">
+
+                <TextView
+                    style="@style/TextAppearance.AppCompat.Body2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="@{viewModel.recipeStepBaseObserver.fullDescription}"
+                    tools:text="ijasdijasidjasidj" />
+            </android.support.v7.widget.CardView>
 
             <RelativeLayout
                 android:id="@+id/rlFooter"
@@ -53,16 +61,16 @@
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:layout_alignParentStart="true"
-                    android:src="@drawable/ic_baseline_skip_previous_24px"
-                    android:layout_alignParentLeft="true" />
+                    android:layout_alignParentLeft="true"
+                    android:src="@drawable/ic_baseline_skip_previous_24px" />
 
                 <ImageView
                     android:id="@+id/ivNext"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:layout_alignParentEnd="true"
-                    android:src="@drawable/ic_baseline_skip_next_24px"
-                    android:layout_alignParentRight="true" />
+                    android:layout_alignParentRight="true"
+                    android:src="@drawable/ic_baseline_skip_next_24px" />
 
             </RelativeLayout>
         </LinearLayout>
