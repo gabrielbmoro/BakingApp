@@ -46,10 +46,6 @@ public class RecipeStepDetailActivity extends AppCompatActivity implements OnVid
             Step stepTarget = getIntent().getParcelableExtra(RECIPE_STEP_INTENT_KEY);
             if (stepTarget != null) {
                 viewModel.setup(recipeTarget, this, stepTarget);
-
-
-                // Prepare the player with the source.
-                //binding.cvmedia.setPlayer(videoSource);
             }
         }
     }
@@ -76,6 +72,9 @@ public class RecipeStepDetailActivity extends AppCompatActivity implements OnVid
         context.startActivity(intent);
     }
 
+    /**
+     * Reference: https://google.github.io/ExoPlayer/guide.html
+     */
     @Override
     public void changeVideoURL(String url) {
         SimpleExoPlayer player = ExoPlayerFactory.newSimpleInstance(this);
