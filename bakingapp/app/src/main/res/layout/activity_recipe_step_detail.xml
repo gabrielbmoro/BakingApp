@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools">
+<layout
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
     <data>
 
@@ -10,73 +12,82 @@
     </data>
 
 
-    <ScrollView
+    <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".ui.recipe_step_detail_screen.RecipeStepDetailActivity">
 
-        <LinearLayout xmlns:app="http://schemas.android.com/apk/res-auto"
-            xmlns:tools="http://schemas.android.com/tools"
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/cvmedia"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_margin="@dimen/marginCard"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toTopOf="@+id/cvRecipeStepInstruction"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/cvRecipeStepInstruction"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_margin="@dimen/marginCard"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            app:cardCornerRadius="@dimen/cardCornerRagius"
+            app:cardElevation="@dimen/cardELevation"
+            app:layout_constraintBottom_toTopOf="@+id/rlFooter"
+            app:layout_constraintEnd_toEndOf="@+id/rlFooter"
+            app:layout_constraintStart_toStartOf="@+id/rlFooter"
+            app:layout_constraintTop_toBottomOf="@+id/cvmedia">
+
+            <TextView
+                style="@style/TextAppearance.AppCompat.Body2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="@{viewModel.recipeStepBaseObserver.stepDescription}"
+                tools:text="ijasdijasidjasidj" />
+        </android.support.v7.widget.CardView>
+
+        <RelativeLayout
+            android:id="@+id/rlFooter"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
 
+            <ImageButton
+                android:id="@+id/ivPrevious"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentLeft="true"
+                android:onClick="@{() -> viewModel.onPrevious()}"
+                android:src="@drawable/ic_baseline_skip_previous_24px" />
 
-            <android.support.v7.widget.CardView
-                android:id="@+id/cvmedia"
-                android:layout_width="match_parent"
-                android:layout_height="400dp"
-                android:layout_margin="@dimen/marginCard"
-                android:layout_marginStart="16dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginRight="16dp" />
+            <ImageButton
+                android:id="@+id/ivNext"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:onClick="@{() -> viewModel.onNext()}"
+                android:src="@drawable/ic_baseline_skip_next_24px" />
 
+        </RelativeLayout>
 
-            <android.support.v7.widget.CardView
-                android:id="@+id/cvRecipeStepInstruction"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/marginCard"
-                android:layout_marginTop="16dp"
-                app:cardCornerRadius="@dimen/cardCornerRagius"
-                app:cardElevation="@dimen/cardELevation">
-
-                <TextView
-                    style="@style/TextAppearance.AppCompat.Body2"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:text="@{viewModel.recipeStepBaseObserver.stepDescription}"
-                    tools:text="ijasdijasidjasidj" />
-            </android.support.v7.widget.CardView>
-
-            <RelativeLayout
-                android:id="@+id/rlFooter"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <ImageButton
-                    android:id="@+id/ivPrevious"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_alignParentStart="true"
-                    android:layout_alignParentLeft="true"
-                    android:onClick="@{() -> viewModel.onPrevious()}"
-                    android:src="@drawable/ic_baseline_skip_previous_24px" />
-
-                <ImageButton
-                    android:id="@+id/ivNext"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_alignParentEnd="true"
-                    android:layout_alignParentRight="true"
-                    android:onClick="@{() -> viewModel.onNext()}"
-                    android:src="@drawable/ic_baseline_skip_next_24px" />
-
-            </RelativeLayout>
-        </LinearLayout>
-
-    </ScrollView>
+    </android.support.constraint.ConstraintLayout>
 
 </layout>
