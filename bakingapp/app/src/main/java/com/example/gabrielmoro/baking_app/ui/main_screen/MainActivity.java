@@ -10,8 +10,8 @@ import com.example.gabrielmoro.baking_app.api.APICallBackResult;
 import com.example.gabrielmoro.baking_app.api.APIRetrofitHandler;
 import com.example.gabrielmoro.baking_app.databinding.ActivityMainBinding;
 import com.example.gabrielmoro.baking_app.model.Recipe;
-import com.example.gabrielmoro.baking_app.ui.main_screen.viewmodel.MainViewModel;
-import com.example.gabrielmoro.baking_app.ui.main_screen.viewmodel.RecipeItemViewModel;
+import com.example.gabrielmoro.baking_app.ui.main_screen.adapter.RecipeAdapterList;
+import com.example.gabrielmoro.baking_app.ui.main_screen.adapter.RecipeItemViewModel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
             public void onSucess(List<Recipe> result) {
                 if (result != null) {
                     viewModel.setRecipesData(result);
-                    Timber.d("onSucess: " + result.toString());
+                    Timber.d("onSucess: %s", result.toString());
                 }
             }
 

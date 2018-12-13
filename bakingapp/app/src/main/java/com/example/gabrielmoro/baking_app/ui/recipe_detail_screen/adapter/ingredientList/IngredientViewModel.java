@@ -1,4 +1,4 @@
-package com.example.gabrielmoro.baking_app.ui.main_screen.recipe_detail_screen.viewmodel;
+package com.example.gabrielmoro.baking_app.ui.recipe_detail_screen.adapter.ingredientList;
 
 import android.arch.lifecycle.ViewModel;
 import android.support.annotation.NonNull;
@@ -13,7 +13,7 @@ public class IngredientViewModel extends ViewModel implements AdapterViewModels<
     private String amount;
 
     @Override
-    public void setup(@NonNull Ingredient ingredient) {
+    public void setup(Object object, @NonNull Ingredient ingredient) {
         description = ingredient.getIngredient();
         amount = ingredient.getQuantity() + " " + ingredient.getMeasure();
     }

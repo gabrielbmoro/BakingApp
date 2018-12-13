@@ -1,4 +1,4 @@
-package com.example.gabrielmoro.baking_app.ui.main_screen.recipe_detail_screen;
+package com.example.gabrielmoro.baking_app.ui.recipe_detail_screen;
 
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Context;
@@ -10,7 +10,6 @@ import android.os.Bundle;
 import com.example.gabrielmoro.baking_app.R;
 import com.example.gabrielmoro.baking_app.databinding.ActivityRecipeDetailBinding;
 import com.example.gabrielmoro.baking_app.model.Recipe;
-import com.example.gabrielmoro.baking_app.ui.main_screen.recipe_detail_screen.viewmodel.RecipeViewModel;
 
 public class RecipeDetailActivity extends AppCompatActivity {
 
@@ -27,7 +26,7 @@ public class RecipeDetailActivity extends AppCompatActivity {
             finish();
         else {
             Recipe recipe = getIntent().getParcelableExtra(RECIPE_INTENT_KEY);
-            viewModel.setup(recipe.getSteps(), recipe.getIngredients(), getLayoutInflater());
+            viewModel.setup(recipe, getLayoutInflater());
         }
     }
 

@@ -10,7 +10,7 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:name=".ui.base.BakingApplication"
+        android:name=".BakingApplication"
         android:theme="@style/AppTheme">
         <activity android:name=".ui.main_screen.MainActivity">
             <intent-filter>
@@ -20,11 +20,11 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ui.main_screen.recipe_detail_screen.RecipeDetailActivity"
+            android:name=".ui.recipe_detail_screen.RecipeDetailActivity"
             android:parentActivityName=".ui.main_screen.MainActivity" />
         <activity
-            android:name=".ui.main_screen.recipe_detail_screen.recipe_step_detail_screen.RecipeStepDetailActivity"
-            android:parentActivityName=".ui.main_screen.recipe_detail_screen.RecipeDetailActivity" />
+            android:name=".ui.recipe_step_detail_screen.RecipeStepDetailActivity"
+            android:parentActivityName=".ui.recipe_detail_screen.RecipeDetailActivity" />
     </application>
 
 </manifest>

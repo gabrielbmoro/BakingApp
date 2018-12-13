@@ -6,7 +6,7 @@
 
         <variable
             name="viewModel"
-            type="com.example.gabrielmoro.baking_app.ui.main_screen.recipe_detail_screen.viewmodel.RecipeViewModel" />
+            type="com.example.gabrielmoro.baking_app.ui.recipe_detail_screen.RecipeViewModel" />
     </data>
 
     <LinearLayout
@@ -18,7 +18,7 @@
         android:layout_marginRight="12dp"
         android:orientation="vertical"
         android:weightSum="2"
-        tools:context=".ui.main_screen.recipe_detail_screen.RecipeDetailActivity">
+        tools:context=".ui.recipe_detail_screen.RecipeDetailActivity">
 
         <TextView
             android:id="@+id/tvIngredientsLabel"
@@ -35,7 +35,7 @@
             android:layout_marginTop="5dp"
             android:layout_marginBottom="8dp"
             android:layout_weight="1"
-            android:adapter="@{viewModel.recipeBaseObservable.ingredientListAdapter}"
+            android:adapter="@{viewModel.ingredientListAdapter}"
             android:focusable="false"
             tools:listitem="@layout/layout_ingredient_item" />
 
@@ -53,7 +53,7 @@
             android:layout_height="match_parent"
             android:layout_marginTop="5dp"
             android:layout_weight="1"
-            android:adapter="@{viewModel.recipeBaseObservable.stepListAdapter}"
+            android:adapter="@{viewModel.stepListAdapter}"
             android:focusable="false"
             tools:listitem="@layout/layout_step_item" />
     </LinearLayout>

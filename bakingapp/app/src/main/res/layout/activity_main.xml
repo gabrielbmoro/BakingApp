@@ -3,9 +3,10 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="viewModel"
-            type="com.example.gabrielmoro.baking_app.ui.main_screen.viewmodel.MainViewModel" />
+            type="com.example.gabrielmoro.baking_app.ui.main_screen.MainViewModel" />
     </data>
 
     <RelativeLayout
@@ -19,8 +20,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_margin="@dimen/externalMarginCard"
-            tools:listitem="@layout/layout_recipe_item"
-            android:adapter="@{viewModel.getObservableObjects().generalRecipe}"/>
+            android:adapter="@{viewModel.getMainViewAdapter()}"
+            tools:listitem="@layout/layout_recipe_item" />
 
     </RelativeLayout>
 </layout>

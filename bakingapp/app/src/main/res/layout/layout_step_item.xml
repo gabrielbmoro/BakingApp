@@ -6,7 +6,7 @@
 
         <variable
             name="viewModel"
-            type="com.example.gabrielmoro.baking_app.ui.main_screen.recipe_detail_screen.viewmodel.StepItemViewModel" />
+            type="com.example.gabrielmoro.baking_app.ui.recipe_detail_screen.adapter.stepList.StepItemViewModel" />
     </data>
 
     <android.support.v7.widget.CardView xmlns:app="http://schemas.android.com/apk/res-auto"

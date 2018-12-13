@@ -1,4 +1,4 @@
-package com.example.gabrielmoro.baking_app.ui.main_screen.recipe_detail_screen.recipe_step_detail_screen;
+package com.example.gabrielmoro.baking_app.ui.recipe_step_detail_screen;
 
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Context;
@@ -9,12 +9,14 @@ import android.os.Bundle;
 
 import com.example.gabrielmoro.baking_app.R;
 import com.example.gabrielmoro.baking_app.databinding.ActivityRecipeStepDetailBinding;
+import com.example.gabrielmoro.baking_app.model.Recipe;
 import com.example.gabrielmoro.baking_app.model.Step;
-import com.example.gabrielmoro.baking_app.ui.main_screen.recipe_detail_screen.recipe_step_detail_screen.viewmodel.RecipeStepDetailViewModel;
 
 public class RecipeStepDetailActivity extends AppCompatActivity {
 
     private static final String RECIPE_STEP_INTENT_KEY = "Step target";
+    private static final String RECIPE_INTENT_KEY = "Recipe target";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,19 +24,21 @@ public class RecipeStepDetailActivity extends AppCompatActivity {
         RecipeStepDetailViewModel viewModel = ViewModelProviders.of(this).get(RecipeStepDetailViewModel.class);
         binding.setViewModel(viewModel);
 
-        if(!getIntent().hasExtra(RECIPE_STEP_INTENT_KEY)) {
+        if(!getIntent().hasExtra(RECIPE_STEP_INTENT_KEY) || !getIntent().hasExtra(RECIPE_INTENT_KEY)) {
             finish();
         } else {
+            Recipe recipeTarget = getIntent().getParcelableExtra(RECIPE_INTENT_KEY);
             Step stepTarget = getIntent().getParcelableExtra(RECIPE_STEP_INTENT_KEY);
             if(stepTarget!=null) {
-                viewModel.setup(stepTarget);
+                viewModel.setup(recipeTarget, stepTarget);
             }
         }
     }
 
-    public static void startActivity(Context context, Step target) {
+    public static void startActivity(Context context, Recipe recipeOrigin, Step target) {
         Intent intent = new Intent(context, RecipeStepDetailActivity.class);
         intent.putExtra(RECIPE_STEP_INTENT_KEY, target);
+        intent.putExtra(RECIPE_INTENT_KEY, recipeOrigin);
         context.startActivity(intent);
     }
 }

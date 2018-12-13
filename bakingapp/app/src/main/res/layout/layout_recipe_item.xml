@@ -7,7 +7,7 @@
 
         <variable
             name="viewModel"
-            type="com.example.gabrielmoro.baking_app.ui.main_screen.viewmodel.RecipeItemViewModel" />
+            type="com.example.gabrielmoro.baking_app.ui.main_screen.adapter.RecipeItemViewModel" />
     </data>
 
     <android.support.v7.widget.CardView

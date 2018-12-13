@@ -1,11 +1,11 @@
-package com.example.gabrielmoro.baking_app.ui.main_screen.viewmodel;
+package com.example.gabrielmoro.baking_app.ui.main_screen.adapter;
 
 import android.arch.lifecycle.ViewModel;
 import android.view.View;
 
 import com.example.gabrielmoro.baking_app.model.Recipe;
 import com.example.gabrielmoro.baking_app.ui.base.AdapterViewModels;
-import com.example.gabrielmoro.baking_app.ui.main_screen.recipe_detail_screen.RecipeDetailActivity;
+import com.example.gabrielmoro.baking_app.ui.recipe_detail_screen.RecipeDetailActivity;
 
 public class RecipeItemViewModel extends ViewModel implements AdapterViewModels<Recipe> {
 
@@ -13,7 +13,7 @@ public class RecipeItemViewModel extends ViewModel implements AdapterViewModels<
     private Recipe recipeTarget;
 
     @Override
-    public void setup(Recipe item) {
+    public void setup(Object object, Recipe item) {
         recipeTarget = item;
         title = recipeTarget.getName();
     }

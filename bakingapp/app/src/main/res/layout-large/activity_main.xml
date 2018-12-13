@@ -6,7 +6,7 @@
 
         <variable
             name="viewModel"
-            type="com.example.gabrielmoro.baking_app.ui.main_screen.viewmodel.MainViewModel" />
+            type="com.example.gabrielmoro.baking_app.ui.main_screen.MainViewModel" />
     </data>
 
     <RelativeLayout

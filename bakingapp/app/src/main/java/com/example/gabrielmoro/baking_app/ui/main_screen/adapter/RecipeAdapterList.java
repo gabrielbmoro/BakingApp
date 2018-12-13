@@ -1,11 +1,10 @@
-package com.example.gabrielmoro.baking_app.ui.main_screen;
+package com.example.gabrielmoro.baking_app.ui.main_screen.adapter;
 
 import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 
 import com.example.gabrielmoro.baking_app.R;
 import com.example.gabrielmoro.baking_app.ui.base.GeneralBaseAdapter;
-import com.example.gabrielmoro.baking_app.ui.main_screen.viewmodel.RecipeItemViewModel;
 
 import java.util.List;
 
