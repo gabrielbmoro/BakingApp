@@ -68,6 +68,10 @@ public class Step implements Parcelable {
         this.description = description;
     }
 
+    public String getVideoURL() {
+        return videoURL;
+    }
+
     @Override
     public int describeContents() {
         return 0;

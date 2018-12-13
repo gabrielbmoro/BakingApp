@@ -16,6 +16,10 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    compileOptions {
+        sourceCompatibility 1.8
+        targetCompatibility 1.8
+    }
 
     /**
      * DataBinding
@@ -64,5 +68,13 @@ dependencies {
      * Reference: https://github.com/JakeWharton/timber
      */
     implementation 'com.jakewharton.timber:timber:4.7.1'
+
+    /**
+     * Adding Exoplayer
+     */
+    def exo_player_version = "2.9.2"
+    implementation "com.google.android.exoplayer:exoplayer-core:$exo_player_version"
+    implementation "com.google.android.exoplayer:exoplayer-dash:$exo_player_version"
+    implementation "com.google.android.exoplayer:exoplayer-ui:$exo_player_version"
 
 }

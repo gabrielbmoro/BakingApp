@@ -18,7 +18,7 @@
         tools:context=".ui.recipe_step_detail_screen.RecipeStepDetailActivity">
 
 
-        <android.support.v7.widget.CardView
+        <com.google.android.exoplayer2.ui.PlayerView
             android:id="@+id/cvmedia"
             android:layout_width="match_parent"
             android:layout_height="0dp"
