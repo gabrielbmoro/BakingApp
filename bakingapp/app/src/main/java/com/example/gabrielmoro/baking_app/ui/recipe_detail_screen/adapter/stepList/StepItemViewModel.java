@@ -7,7 +7,7 @@ import android.view.View;
 import com.example.gabrielmoro.baking_app.model.Recipe;
 import com.example.gabrielmoro.baking_app.model.Step;
 import com.example.gabrielmoro.baking_app.ui.base.AdapterViewModels;
-import com.example.gabrielmoro.baking_app.ui.recipe_step_detail_screen.RecipeStepDetailActivity;
+import com.example.gabrielmoro.baking_app.ui.recipe_detail_screen.OnStepClick;
 
 public class StepItemViewModel extends ViewModel implements AdapterViewModels<Step> {
 
@@ -15,6 +15,11 @@ public class StepItemViewModel extends ViewModel implements AdapterViewModels<St
     private String id = "";
     private Step stepTarget;
     private Recipe recipeTarget;
+    private OnStepClick contract;
+
+    public StepItemViewModel(@NonNull OnStepClick contractArgument){
+        contract = contractArgument;
+    }
 
     private void fillTheFields() {
         shortDescription = stepTarget.getShortDescription();
@@ -22,17 +27,21 @@ public class StepItemViewModel extends ViewModel implements AdapterViewModels<St
     }
 
     @Override
-    public void setup(Object object, @NonNull Step item) {
-        recipeTarget = (Recipe) object;
+    public void setup(@NonNull Step item) {
         stepTarget = item;
         fillTheFields();
     }
 
-    @Override
-    public void click(View view) {
-        RecipeStepDetailActivity.startActivity(view.getContext(), recipeTarget, stepTarget);
+    public void setRecipe(@NonNull Recipe recipeArg) {
+        recipeTarget = recipeArg;
     }
 
+    @Override
+    public void click(View view) {
+        if (contract != null && stepTarget != null) {
+            contract.onStepClick(stepTarget);
+        }
+    }
 
     public String getShortDescription() {
         return shortDescription;

@@ -23,7 +23,7 @@ public class MainViewModel extends ViewModel {
         RecipeItemViewModel viewModelTmp;
         for (Recipe recipe : alstRecipes) {
             viewModelTmp = new RecipeItemViewModel();
-            viewModelTmp.setup(null, recipe);
+            viewModelTmp.setup(recipe);
             viewModels.add(viewModelTmp);
         }
         mainViewAdapter.onUpdateAllElements(viewModels);

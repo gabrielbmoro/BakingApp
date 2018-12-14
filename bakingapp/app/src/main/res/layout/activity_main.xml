@@ -15,12 +15,13 @@
         tools:context=".ui.main_screen.MainActivity">
 
 
-        <ListView
+        <GridView
             android:id="@+id/lvRecipes"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_margin="@dimen/externalMarginCard"
             android:adapter="@{viewModel.getMainViewAdapter()}"
+            android:numColumns="1"
             tools:listitem="@layout/layout_recipe_item" />
 
     </RelativeLayout>
