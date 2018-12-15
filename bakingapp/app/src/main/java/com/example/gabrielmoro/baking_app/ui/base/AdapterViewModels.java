@@ -8,7 +8,7 @@ import android.view.View;
  */
 public interface AdapterViewModels<T> {
 
-    void setup(Object object, T item);
+    void setup(T item);
 
     void click(View view);
 }

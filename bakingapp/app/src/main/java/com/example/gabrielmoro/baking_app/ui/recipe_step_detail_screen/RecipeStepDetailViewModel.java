@@ -12,7 +12,7 @@ public class RecipeStepDetailViewModel extends ViewModel {
     private Recipe recipeTarget;
     private MutableLiveData<Step> stepTarget;
     private RecipeStepDetailBaseObserver recipeStepBaseObserver;
-    private OnVideoCallback contract;
+    private OnStepChangedCallBack contract;
 
 
     RecipeStepDetailViewModel() {
@@ -20,7 +20,7 @@ public class RecipeStepDetailViewModel extends ViewModel {
         stepTarget = new MutableLiveData<>();
     }
 
-    public void setup(@NonNull Recipe recipeArgument, @NonNull OnVideoCallback contractArgument, @NonNull Step stepArgument) {
+    public void setup(@NonNull Recipe recipeArgument, @NonNull OnStepChangedCallBack contractArgument, @NonNull Step stepArgument) {
         recipeTarget = recipeArgument;
         contract = contractArgument;
         setupStep(stepArgument);
@@ -31,7 +31,7 @@ public class RecipeStepDetailViewModel extends ViewModel {
         stepTarget.setValue(stepArgument);
         String description = stepTarget.getValue().getDescription();
         recipeStepBaseObserver.setStepDescription(description);
-        contract.changeVideoURL(stepArgument.getVideoURL());
+        contract.changeTheStep(stepArgument);
     }
 
     public RecipeStepDetailBaseObserver getRecipeStepBaseObserver() {

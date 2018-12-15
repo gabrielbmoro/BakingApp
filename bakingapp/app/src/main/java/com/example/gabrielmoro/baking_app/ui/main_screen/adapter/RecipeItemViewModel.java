@@ -13,7 +13,7 @@ public class RecipeItemViewModel extends ViewModel implements AdapterViewModels<
     private Recipe recipeTarget;
 
     @Override
-    public void setup(Object object, Recipe item) {
+    public void setup(Recipe item) {
         recipeTarget = item;
         title = recipeTarget.getName();
     }

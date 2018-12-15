@@ -19,29 +19,34 @@ public class RecipeViewModel extends ViewModel {
 
     private StepAdapterList stepListAdapter;
     private IngredientAdapterList ingredientListAdapter;
+    private Recipe recipeTarget;
+    private OnStepClick contract;
 
-    public void setup(@NonNull Recipe recipeArgument, LayoutInflater inflater) {
-        stepListAdapter = new StepAdapterList(convertStepsInStepViewModels(recipeArgument), inflater);
-        ingredientListAdapter = new IngredientAdapterList(convertIngredientInIngredientViewModels(recipeArgument), inflater);
+    public void setup(@NonNull Recipe recipeArgument, LayoutInflater inflater, @NonNull OnStepClick contractArg) {
+        recipeTarget = recipeArgument;
+        contract = contractArg;
+        stepListAdapter = new StepAdapterList(convertStepsInStepViewModels(), inflater);
+        ingredientListAdapter = new IngredientAdapterList(convertIngredientInIngredientViewModels(), inflater);
     }
 
-    private List<StepItemViewModel> convertStepsInStepViewModels(@NonNull Recipe recipeTarget) {
+    private List<StepItemViewModel> convertStepsInStepViewModels() {
         List<StepItemViewModel> viewModels = new ArrayList<>();
         StepItemViewModel tmp;
         for (Step step : recipeTarget.getSteps()) {
-            tmp = new StepItemViewModel();
-            tmp.setup(recipeTarget, step);
+            tmp = new StepItemViewModel(contract);
+            tmp.setup(step);
+            tmp.setRecipe(recipeTarget);
             viewModels.add(tmp);
         }
         return viewModels;
     }
 
-    private List<IngredientViewModel> convertIngredientInIngredientViewModels(@NonNull Recipe recipeTarget) {
+    private List<IngredientViewModel> convertIngredientInIngredientViewModels() {
         List<IngredientViewModel> viewModels = new ArrayList<>();
         IngredientViewModel tmp;
         for (Ingredient ingredient : recipeTarget.getIngredients()) {
             tmp = new IngredientViewModel();
-            tmp.setup(null, ingredient);
+            tmp.setup(ingredient);
             viewModels.add(tmp);
         }
         return viewModels;
@@ -53,5 +58,9 @@ public class RecipeViewModel extends ViewModel {
 
     public IngredientAdapterList getIngredientListAdapter() {
         return ingredientListAdapter;
+    }
+
+    public Recipe getRecipeTarget() {
+        return recipeTarget;
     }
 }

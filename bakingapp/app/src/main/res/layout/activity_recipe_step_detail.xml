@@ -17,44 +17,21 @@
         android:layout_height="match_parent"
         tools:context=".ui.recipe_step_detail_screen.RecipeStepDetailActivity">
 
-
-        <com.google.android.exoplayer2.ui.PlayerView
-            android:id="@+id/cvmedia"
+        <FrameLayout
+            android:id="@+id/flMediaPlayerAndDescription"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_margin="@dimen/marginCard"
             android:layout_marginStart="8dp"
             android:layout_marginLeft="8dp"
+            android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
             android:layout_marginRight="8dp"
             android:layout_marginBottom="8dp"
-            app:layout_constraintBottom_toTopOf="@+id/cvRecipeStepInstruction"
+            app:layout_constraintBottom_toTopOf="@+id/rlFooter"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-
-        <android.support.v7.widget.CardView
-            android:id="@+id/cvRecipeStepInstruction"
-            android:layout_width="match_parent"
-            android:layout_height="150dp"
-            android:layout_margin="@dimen/marginCard"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp"
-            app:cardCornerRadius="@dimen/cardCornerRagius"
-            app:cardElevation="@dimen/cardELevation"
-            app:layout_constraintBottom_toTopOf="@+id/rlFooter"
-            app:layout_constraintEnd_toEndOf="@+id/rlFooter"
-            app:layout_constraintStart_toStartOf="@+id/rlFooter"
-            app:layout_constraintTop_toBottomOf="@+id/cvmedia">
-
-            <TextView
-                style="@style/TextAppearance.AppCompat.Body2"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="@{viewModel.recipeStepBaseObserver.stepDescription}"
-                tools:text="ijasdijasidjasidj" />
-        </android.support.v7.widget.CardView>
 
         <RelativeLayout
             android:id="@+id/rlFooter"

@@ -13,7 +13,7 @@ public class IngredientViewModel extends ViewModel implements AdapterViewModels<
     private String amount;
 
     @Override
-    public void setup(Object object, @NonNull Ingredient ingredient) {
+    public void setup(@NonNull Ingredient ingredient) {
         description = ingredient.getIngredient();
         amount = ingredient.getQuantity() + " " + ingredient.getMeasure();
     }

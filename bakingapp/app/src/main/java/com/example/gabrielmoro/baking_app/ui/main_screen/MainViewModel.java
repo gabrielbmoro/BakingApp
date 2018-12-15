@@ -10,6 +10,10 @@ import com.example.gabrielmoro.baking_app.ui.main_screen.adapter.RecipeItemViewM
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * ViewModels
+ * Reference: https://developer.android.com/topic/libraries/architecture/viewmodel
+ */
 public class MainViewModel extends ViewModel {
 
     private RecipeAdapterList mainViewAdapter;
@@ -23,7 +27,7 @@ public class MainViewModel extends ViewModel {
         RecipeItemViewModel viewModelTmp;
         for (Recipe recipe : alstRecipes) {
             viewModelTmp = new RecipeItemViewModel();
-            viewModelTmp.setup(null, recipe);
+            viewModelTmp.setup(recipe);
             viewModels.add(viewModelTmp);
         }
         mainViewAdapter.onUpdateAllElements(viewModels);

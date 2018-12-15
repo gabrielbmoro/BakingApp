@@ -4,7 +4,7 @@ import android.arch.lifecycle.ViewModelProviders;
 import android.content.Context;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
-import android.net.Uri;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
@@ -12,20 +12,9 @@ import com.example.gabrielmoro.baking_app.R;
 import com.example.gabrielmoro.baking_app.databinding.ActivityRecipeStepDetailBinding;
 import com.example.gabrielmoro.baking_app.model.Recipe;
 import com.example.gabrielmoro.baking_app.model.Step;
-import com.google.android.exoplayer2.ExoPlayer;
-import com.google.android.exoplayer2.ExoPlayerFactory;
-import com.google.android.exoplayer2.SimpleExoPlayer;
-import com.google.android.exoplayer2.source.ExtractorMediaSource;
-import com.google.android.exoplayer2.source.MediaSource;
-import com.google.android.exoplayer2.upstream.DataSource;
-import com.google.android.exoplayer2.upstream.DefaultDataSourceFactory;
-import com.google.android.exoplayer2.util.Util;
+import com.example.gabrielmoro.baking_app.ui.player_and_description_panel.PlayerAndDescriptionFragment;
 
-import java.net.MalformedURLException;
-import java.net.URISyntaxException;
-import java.net.URL;
-
-public class RecipeStepDetailActivity extends AppCompatActivity implements OnVideoCallback {
+public class RecipeStepDetailActivity extends AppCompatActivity implements OnStepChangedCallBack {
 
 
     private ActivityRecipeStepDetailBinding binding;
@@ -50,20 +39,6 @@ public class RecipeStepDetailActivity extends AppCompatActivity implements OnVid
         }
     }
 
-    private Uri getStepUri(String urlArgument) {
-        // This is the MediaSource representing the media to be played.
-        URL url;
-        Uri uri = null;
-        try {
-            url = new URL(urlArgument);
-            uri = Uri.parse(url.toURI().toString());
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        } catch (URISyntaxException e) {
-            e.printStackTrace();
-        }
-        return uri;
-    }
 
     public static void startActivity(Context context, Recipe recipeOrigin, Step target) {
         Intent intent = new Intent(context, RecipeStepDetailActivity.class);
@@ -72,22 +47,11 @@ public class RecipeStepDetailActivity extends AppCompatActivity implements OnVid
         context.startActivity(intent);
     }
 
-    /**
-     * Reference: https://google.github.io/ExoPlayer/guide.html
-     */
     @Override
-    public void changeVideoURL(String url) {
-        SimpleExoPlayer player = ExoPlayerFactory.newSimpleInstance(this);
-        // Produces DataSource instances through which media data is loaded.
-        DataSource.Factory dataSourceFactory = new DefaultDataSourceFactory(this,
-                Util.getUserAgent(this, getResources().getResourceName(R.string.app_name)));
-
-        Uri uri = getStepUri(url);
-        if (uri != null) {
-            MediaSource videoSource = new ExtractorMediaSource.Factory(dataSourceFactory)
-                    .createMediaSource(uri);
-            binding.cvmedia.setPlayer(player);
-            player.prepare(videoSource);
-        }
+    public void changeTheStep(@NonNull Step step) {
+        getSupportFragmentManager().
+                beginTransaction().
+                replace(R.id.flMediaPlayerAndDescription, PlayerAndDescriptionFragment.newInstance(step))
+                .commit();
     }
 }
