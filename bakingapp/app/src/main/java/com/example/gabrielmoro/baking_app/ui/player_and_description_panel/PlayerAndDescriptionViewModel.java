@@ -6,16 +6,16 @@ import android.support.annotation.NonNull;
 
 public class PlayerAndDescriptionViewModel extends ViewModel {
 
-    private String description;
+    private DescriptionBaseObservable descriptionBaseObservable = new DescriptionBaseObservable();
     private Uri urlVideo;
 
     public void setup(@NonNull String descriptionArg, @NonNull Uri urlVideoArg) {
-        description = descriptionArg;
+        descriptionBaseObservable.setDescription(descriptionArg);
         urlVideo = urlVideoArg;
     }
 
-    public String getDescription() {
-        return description;
+    public DescriptionBaseObservable getDescriptionBaseObservable() {
+        return descriptionBaseObservable;
     }
 
     Uri getUriVideo() {
