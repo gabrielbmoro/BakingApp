@@ -71,6 +71,7 @@ dependencies {
 
     /**
      * Adding Exoplayer
+     * Reference: https://google.github.io/ExoPlayer/guide.html
      */
     def exo_player_version = "2.9.2"
     implementation "com.google.android.exoplayer:exoplayer-core:$exo_player_version"
