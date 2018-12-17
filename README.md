@@ -18,4 +18,4 @@ The project was created using three layers:
     * ui - Define the user interface behavior, screens, view models, and others visual things;
     * api - Provide the request service.
     
-If you want to see the version has with functionalities, click [here](https://github.com/tido4410/bakingapp_udacitycourse/releases/tag/v1.0)
+If you want to see the version has with functionalities, click [here](https://github.com/gabrielbmoro/bakingapp_udacitycourse/releases/tag/v1.0.1)
