@@ -22,6 +22,9 @@ public class RecipeViewModel extends ViewModel {
     private Recipe recipeTarget;
     private OnStepClick contract;
 
+    public RecipeViewModel() {
+    }
+
     public void setup(@NonNull Recipe recipeArgument, LayoutInflater inflater, @NonNull OnStepClick contractArg) {
         recipeTarget = recipeArgument;
         contract = contractArg;
