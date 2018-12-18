@@ -33,6 +33,7 @@ public class PlayerAndDescriptionFragment extends Fragment {
     private static String PARCELABLE_BUNDLE_KEY = "Step to Fragment";
     private FragmentPlayerAndInstructionBinding binding;
     private PlayerAndDescriptionViewModel viewModel;
+    private SimpleExoPlayer player;
 
     @Nullable
     @Override
@@ -56,6 +57,16 @@ public class PlayerAndDescriptionFragment extends Fragment {
         changeVideoURL();
     }
 
+    /**
+     * Reference: https://medium.com/s23nyc-tech/drop-in-android-video-exoplayer2-with-picture-in-picture-e2d4f8c1eb30
+     */
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        binding.cvmedia.setPlayer(null);
+        player.release();
+    }
+
     private Uri getStepUri(String urlArgument) {
         // This is the MediaSource representing the media to be played.
         URL url;
@@ -75,7 +86,7 @@ public class PlayerAndDescriptionFragment extends Fragment {
      * Reference: https://google.github.io/ExoPlayer/guide.html
      */
     public void changeVideoURL() {
-        SimpleExoPlayer player = ExoPlayerFactory.newSimpleInstance(getContext());
+        player = ExoPlayerFactory.newSimpleInstance(getContext());
         // Produces DataSource instances through which media data is loaded.
         DataSource.Factory dataSourceFactory = new DefaultDataSourceFactory(Objects.requireNonNull(getContext()),
                 Util.getUserAgent(getContext(), getResources().getResourceName(R.string.app_name)));
