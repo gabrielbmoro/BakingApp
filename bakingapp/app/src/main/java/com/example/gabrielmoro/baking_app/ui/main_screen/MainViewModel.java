@@ -1,14 +1,19 @@
 package com.example.gabrielmoro.baking_app.ui.main_screen;
 
+import android.arch.lifecycle.MutableLiveData;
 import android.arch.lifecycle.ViewModel;
 import android.support.annotation.NonNull;
 
+import com.example.gabrielmoro.baking_app.api.APICallBackResult;
+import com.example.gabrielmoro.baking_app.api.APIRetrofitHandler;
 import com.example.gabrielmoro.baking_app.model.Recipe;
 import com.example.gabrielmoro.baking_app.ui.main_screen.adapter.RecipeAdapterList;
 import com.example.gabrielmoro.baking_app.ui.main_screen.adapter.RecipeItemViewModel;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import timber.log.Timber;
 
 /**
  * ViewModels
@@ -17,6 +22,7 @@ import java.util.List;
 public class MainViewModel extends ViewModel {
 
     private RecipeAdapterList mainViewAdapter;
+    private MutableLiveData<List<Recipe>> recipes = new MutableLiveData<>();
 
     public void setup(@NonNull RecipeAdapterList adapter) {
         mainViewAdapter = adapter;
@@ -32,6 +38,31 @@ public class MainViewModel extends ViewModel {
         }
         mainViewAdapter.onUpdateAllElements(viewModels);
     }
+
+    MutableLiveData<List<Recipe>> getAllRecipes(){
+        APIRetrofitHandler.getMyInstance().getAllRecipes(new APICallBackResult<List<Recipe>>() {
+            @Override
+            public void onSucess(List<Recipe> result) {
+                if (result != null) {
+                    recipes.postValue(result);
+                    Timber.d("onSucess: %s", result.toString());
+                }
+            }
+
+            @Override
+            public void onFailure(Throwable problem) {
+                if (problem != null)
+                    Timber.d("onFailure: %s", problem.toString());
+            }
+
+            @Override
+            public void onCompleted() {
+                Timber.d("onCompleted: 100%");
+            }
+        });
+        return recipes;
+    }
+
 
     public RecipeAdapterList getMainViewAdapter() {
         return mainViewAdapter;

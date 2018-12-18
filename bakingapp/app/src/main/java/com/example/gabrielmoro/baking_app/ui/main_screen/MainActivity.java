@@ -7,14 +7,10 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 
 import com.example.gabrielmoro.baking_app.R;
-import com.example.gabrielmoro.baking_app.api.APICallBackResult;
-import com.example.gabrielmoro.baking_app.api.APIRetrofitHandler;
 import com.example.gabrielmoro.baking_app.databinding.ActivityMainBinding;
-import com.example.gabrielmoro.baking_app.model.Recipe;
 import com.example.gabrielmoro.baking_app.ui.main_screen.adapter.RecipeAdapterList;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import timber.log.Timber;
 
@@ -45,26 +41,7 @@ public class MainActivity extends AppCompatActivity {
 
         setupRecyclerView();
 
-        APIRetrofitHandler.getMyInstance().getAllRecipes(new APICallBackResult<List<Recipe>>() {
-            @Override
-            public void onSucess(List<Recipe> result) {
-                if (result != null) {
-                    viewModel.setRecipesData(result);
-                    Timber.d("onSucess: %s", result.toString());
-                }
-            }
-
-            @Override
-            public void onFailure(Throwable problem) {
-                if (problem != null)
-                    Timber.d("onFailure: %s", problem.toString());
-            }
-
-            @Override
-            public void onCompleted() {
-                Timber.d("onCompleted: 100%");
-            }
-        });
+        viewModel.getAllRecipes().observe(this, recipes -> viewModel.setRecipesData(recipes));
     }
 
     @Override

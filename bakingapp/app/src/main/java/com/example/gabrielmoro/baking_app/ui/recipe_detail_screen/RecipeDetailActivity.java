@@ -8,6 +8,7 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
+import android.view.View;
 
 import com.example.gabrielmoro.baking_app.R;
 import com.example.gabrielmoro.baking_app.databinding.ActivityRecipeDetailBinding;
@@ -59,7 +60,7 @@ public class RecipeDetailActivity extends AppCompatActivity implements OnStepCli
 
     @Override
     public boolean hasSupportToFrameLayout() {
-        return binding.flMediaPlayerAndDescription != null;
+        return binding.flMediaPlayerAndDescription.getVisibility() == View.VISIBLE;
     }
 
     private void setupRecyclerViews() {
