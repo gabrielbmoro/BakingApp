@@ -15,13 +15,12 @@
         tools:context=".ui.main_screen.MainActivity">
 
 
-        <GridView
-            android:id="@+id/lvRecipes"
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rvRecipes"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_margin="@dimen/externalMarginCard"
             android:adapter="@{viewModel.getMainViewAdapter()}"
-            android:numColumns="1"
             tools:listitem="@layout/layout_recipe_item" />
 
     </RelativeLayout>

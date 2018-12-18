@@ -4,6 +4,7 @@ import android.arch.lifecycle.ViewModelProviders;
 import android.databinding.DataBindingUtil;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
 
 import com.example.gabrielmoro.baking_app.R;
 import com.example.gabrielmoro.baking_app.api.APICallBackResult;
@@ -11,7 +12,6 @@ import com.example.gabrielmoro.baking_app.api.APIRetrofitHandler;
 import com.example.gabrielmoro.baking_app.databinding.ActivityMainBinding;
 import com.example.gabrielmoro.baking_app.model.Recipe;
 import com.example.gabrielmoro.baking_app.ui.main_screen.adapter.RecipeAdapterList;
-import com.example.gabrielmoro.baking_app.ui.main_screen.adapter.RecipeItemViewModel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
 
     public static final String TAG = "MainActivity";
     private MainViewModel viewModel;
+    private ActivityMainBinding binding;
 
     public MainActivity() {
         Timber.tag(TAG);
@@ -38,9 +39,11 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         viewModel = ViewModelProviders.of(this).get(MainViewModel.class);
-        ActivityMainBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
 
         binding.setViewModel(viewModel);
+
+        setupRecyclerView();
 
         APIRetrofitHandler.getMyInstance().getAllRecipes(new APICallBackResult<List<Recipe>>() {
             @Override
@@ -68,6 +71,12 @@ public class MainActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
 
-        viewModel.setup(new RecipeAdapterList(new ArrayList<RecipeItemViewModel>(), getLayoutInflater()));
+        viewModel.setup(new RecipeAdapterList(new ArrayList<>()));
     }
+
+    private void setupRecyclerView() {
+        LinearLayoutManager llm = new LinearLayoutManager(this);
+        binding.rvRecipes.setLayoutManager(llm);
+    }
+
 }

@@ -11,11 +11,12 @@ import java.util.List;
 public class IngredientAdapterList extends GeneralBaseAdapter<IngredientViewModel> {
 
     public IngredientAdapterList(@NonNull List<IngredientViewModel> aLstElements, LayoutInflater aInflater) {
-        super(aLstElements, aInflater);
+        super(aLstElements);
     }
 
     @Override
-    protected int getLayoutResourceAccordingViewType() {
+    public int getLayoutResourceId() {
         return R.layout.layout_ingredient_item;
     }
+
 }

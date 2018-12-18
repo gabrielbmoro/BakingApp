@@ -28,7 +28,7 @@ public class RecipeViewModel extends ViewModel {
     public void setup(@NonNull Recipe recipeArgument, LayoutInflater inflater, @NonNull OnStepClick contractArg) {
         recipeTarget = recipeArgument;
         contract = contractArg;
-        stepListAdapter = new StepAdapterList(convertStepsInStepViewModels(), inflater);
+        stepListAdapter = new StepAdapterList(convertStepsInStepViewModels());
         ingredientListAdapter = new IngredientAdapterList(convertIngredientInIngredientViewModels(), inflater);
     }
 

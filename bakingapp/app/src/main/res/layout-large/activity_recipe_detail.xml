@@ -34,8 +34,8 @@
             app:layout_constraintTop_toTopOf="parent"
             android:weightSum="5">
 
-            <ListView
-                android:id="@+id/lvIngredients"
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rvIngredients"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginTop="5dp"
@@ -43,8 +43,8 @@
                 android:adapter="@{viewModel.ingredientListAdapter}"
                 android:layout_weight="4" />
 
-            <ListView
-                android:id="@+id/lvSteps"
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rvSteps"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginTop="5dp"
