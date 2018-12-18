@@ -28,8 +28,8 @@
             android:layout_marginTop="15dp"
             android:text="@string/ingredients" />
 
-        <ListView
-            android:id="@+id/lvIngredients"
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rvIngredients"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="5dp"
@@ -47,8 +47,8 @@
             android:layout_marginTop="15dp"
             android:text="@string/steps" />
 
-        <ListView
-            android:id="@+id/lvSteps"
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rvSteps"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="5dp"

@@ -1,13 +1,12 @@
 package com.example.gabrielmoro.baking_app.ui.base;
 
-import android.annotation.SuppressLint;
 import android.databinding.DataBindingUtil;
 import android.databinding.ViewDataBinding;
 import android.support.annotation.NonNull;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
 
 import com.example.gabrielmoro.baking_app.BR;
 
@@ -18,14 +17,12 @@ import java.util.List;
  *
  * @param <T>
  */
-public abstract class GeneralBaseAdapter<T> extends BaseAdapter {
+public abstract class GeneralBaseAdapter<T> extends RecyclerView.Adapter<GeneralViewHolder> {
 
     private List<T> elements;
-    private LayoutInflater inflater;
 
-    public GeneralBaseAdapter(@NonNull List<T> aLstElements, LayoutInflater aInflater) {
+    public GeneralBaseAdapter(@NonNull List<T> aLstElements) {
         elements = aLstElements;
-        inflater = aInflater;
     }
 
     public void onUpdateAllElements(@NonNull List<T> newList) {
@@ -33,61 +30,32 @@ public abstract class GeneralBaseAdapter<T> extends BaseAdapter {
         notifyDataSetChanged();
     }
 
+    @NonNull
     @Override
-    public int getCount() {
-        return elements.size();
+    public GeneralViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
+        View view = DataBindingUtil.inflate(LayoutInflater.from(viewGroup.getContext()), getLayoutResourceId(), viewGroup, false).getRoot();
+        return new GeneralViewHolder(view);
     }
 
     @Override
-    public T getItem(int position) {
-        return elements.get(position);
+    public void onBindViewHolder(@NonNull GeneralViewHolder generalViewHolder, int i) {
+        ViewDataBinding binding = DataBindingUtil.getBinding(generalViewHolder.itemView);
+        if (binding != null)
+            binding.setVariable(BR.viewModel, elements.get(i));
     }
+
+
+    public abstract int getLayoutResourceId();
 
     @Override
     public long getItemId(int position) {
         return position;
     }
 
-    /**
-     * To create the databinding call I use the follow reference:
-     * Reference: https://stackoverflow.com/questions/43973490/how-to-do-android-data-binding-a-customadapter-inherited-from-baseadapter-for-sp
-     *
-     * @param position    defines the element index at list
-     * @param convertView is the current view
-     * @param parent      is the parent view
-     * @return the current view with the information from the data object
-     */
-    @SuppressLint("ViewHolder")
-    @SuppressWarnings("unchecked")
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
-
-        View view;
-
-        if (convertView == null) {
-            view = inflater.inflate(getLayoutResourceAccordingViewType(), parent, false);
-        } else {
-            view = convertView;
-        }
-
-        T item = this.elements.get(position);
-
-        if (item != null) {
-            ViewDataBinding dataBinding = DataBindingUtil.bind(view);
-            if (dataBinding != null) {
-                dataBinding.setVariable(BR.viewModel, item);
-                dataBinding.executePendingBindings();
-            }
-        }
-        return view;
+    public int getItemCount() {
+        return elements.size();
     }
 
-
-    /**
-     * This method allows to define the layout resource address in the subclasses.
-     *
-     * @return resource address
-     */
-    protected abstract int getLayoutResourceAccordingViewType();
 
 }

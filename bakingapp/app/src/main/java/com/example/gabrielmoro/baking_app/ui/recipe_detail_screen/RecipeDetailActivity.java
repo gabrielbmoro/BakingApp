@@ -7,6 +7,7 @@ import android.databinding.DataBindingUtil;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
 
 import com.example.gabrielmoro.baking_app.R;
 import com.example.gabrielmoro.baking_app.databinding.ActivityRecipeDetailBinding;
@@ -33,6 +34,7 @@ public class RecipeDetailActivity extends AppCompatActivity implements OnStepCli
         else {
             Recipe recipe = getIntent().getParcelableExtra(RECIPE_INTENT_KEY);
             viewModel.setup(recipe, getLayoutInflater(), this);
+            setupRecyclerViews();
         }
     }
 
@@ -59,4 +61,13 @@ public class RecipeDetailActivity extends AppCompatActivity implements OnStepCli
     public boolean hasSupportToFrameLayout() {
         return binding.flMediaPlayerAndDescription != null;
     }
+
+    private void setupRecyclerViews() {
+        LinearLayoutManager llm1 = new LinearLayoutManager(this);
+        LinearLayoutManager llm2 = new LinearLayoutManager(this);
+
+        binding.rvSteps.setLayoutManager(llm1);
+        binding.rvIngredients.setLayoutManager(llm2);
+    }
+
 }
