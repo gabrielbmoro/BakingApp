@@ -30,10 +30,23 @@ import java.util.Objects;
 
 public class PlayerAndDescriptionFragment extends Fragment {
 
+    // autoplay = false
+    private boolean autoPlay = false;
+
+    // used to remember the playback position
+    private int currentWindow;
+    private long playbackPosition;
+
+    // constant fields for saving and restoring bundle
+    public static final String AUTOPLAY = "autoplay";
+    public static final String CURRENT_WINDOW_INDEX = "current_window_index";
+    public static final String PLAYBACK_POSITION = "playback_position";
+
     private static String PARCELABLE_BUNDLE_KEY = "Step to Fragment";
     private FragmentPlayerAndInstructionBinding binding;
     private PlayerAndDescriptionViewModel viewModel;
-    private SimpleExoPlayer player;
+
+    private SimpleExoPlayer mPlayer;
 
     @Nullable
     @Override
@@ -42,11 +55,20 @@ public class PlayerAndDescriptionFragment extends Fragment {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_player_and_instruction, container, false);
         binding.setViewModel(viewModel);
 
-        Parcelable parcelable = getArguments().getParcelable(PARCELABLE_BUNDLE_KEY);
-        if (parcelable instanceof Step) {
-            String urlVideo = ((Step) parcelable).getVideoURL();
-            String description = ((Step) parcelable).getDescription();
-            viewModel.setup(description, getStepUri(urlVideo));
+
+        if (savedInstanceState != null) {
+            playbackPosition = savedInstanceState.getLong(PLAYBACK_POSITION, 0);
+            currentWindow = savedInstanceState.getInt(CURRENT_WINDOW_INDEX, 0);
+            autoPlay = savedInstanceState.getBoolean(AUTOPLAY, false);
+        }
+
+        if (getArguments() != null) {
+            Parcelable parcelable = getArguments().getParcelable(PARCELABLE_BUNDLE_KEY);
+            if (parcelable instanceof Step) {
+                String urlVideo = ((Step) parcelable).getVideoURL();
+                String description = ((Step) parcelable).getDescription();
+                viewModel.setup(description, getStepUri(urlVideo));
+            }
         }
         return binding.getRoot();
     }
@@ -64,7 +86,7 @@ public class PlayerAndDescriptionFragment extends Fragment {
     public void onDestroy() {
         super.onDestroy();
         binding.cvmedia.setPlayer(null);
-        player.release();
+        mPlayer.release();
     }
 
     private Uri getStepUri(String urlArgument) {
@@ -86,7 +108,7 @@ public class PlayerAndDescriptionFragment extends Fragment {
      * Reference: https://google.github.io/ExoPlayer/guide.html
      */
     public void changeVideoURL() {
-        player = ExoPlayerFactory.newSimpleInstance(getContext());
+        mPlayer = ExoPlayerFactory.newSimpleInstance(getContext());
         // Produces DataSource instances through which media data is loaded.
         DataSource.Factory dataSourceFactory = new DefaultDataSourceFactory(Objects.requireNonNull(getContext()),
                 Util.getUserAgent(getContext(), getResources().getResourceName(R.string.app_name)));
@@ -95,8 +117,21 @@ public class PlayerAndDescriptionFragment extends Fragment {
         if (uri != null) {
             MediaSource videoSource = new ExtractorMediaSource.Factory(dataSourceFactory)
                     .createMediaSource(uri);
-            binding.cvmedia.setPlayer(player);
-            player.prepare(videoSource);
+            mPlayer.setPlayWhenReady(autoPlay);
+            // resume playback position
+            mPlayer.seekTo(currentWindow, playbackPosition);
+            mPlayer.prepare(videoSource);
+            binding.cvmedia.setPlayer(mPlayer);
+        }
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        if (mPlayer == null) {
+            outState.putLong(PLAYBACK_POSITION, playbackPosition);
+            outState.putInt(CURRENT_WINDOW_INDEX, currentWindow);
+            outState.putBoolean(AUTOPLAY, autoPlay);
         }
     }
 
