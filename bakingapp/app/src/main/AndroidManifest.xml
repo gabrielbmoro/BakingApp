@@ -5,12 +5,12 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
+        android:name=".BakingApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:name=".BakingApplication"
         android:theme="@style/AppTheme">
         <activity android:name=".ui.main_screen.MainActivity">
             <intent-filter>
@@ -24,8 +24,22 @@
             android:parentActivityName=".ui.main_screen.MainActivity" />
         <activity
             android:name=".ui.recipe_step_detail_screen.RecipeStepDetailActivity"
-            android:parentActivityName=".ui.recipe_detail_screen.RecipeDetailActivity"
-            android:configChanges="orientation|screenSize|keyboardHidden" />
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:parentActivityName=".ui.recipe_detail_screen.RecipeDetailActivity" />
+
+        <receiver android:name=".ui.widget.RecipeListWidget">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/recipe_list_widget_info" />
+        </receiver>
+
+        <service
+            android:name=".ui.widget.DataProvidesService"
+            android:permission="android.permission.BIND_REMOTEVIEWS" />
     </application>
 
 </manifest>
