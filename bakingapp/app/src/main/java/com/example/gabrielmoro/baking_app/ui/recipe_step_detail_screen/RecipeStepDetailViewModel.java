@@ -15,7 +15,7 @@ public class RecipeStepDetailViewModel extends ViewModel {
     private OnStepChangedCallBack contract;
 
 
-    RecipeStepDetailViewModel() {
+    public RecipeStepDetailViewModel() {
         recipeStepBaseObserver = new RecipeStepDetailBaseObserver();
         stepTarget = new MutableLiveData<>();
     }
