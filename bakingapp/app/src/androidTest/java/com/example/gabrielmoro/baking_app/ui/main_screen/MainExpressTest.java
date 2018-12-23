@@ -8,6 +8,8 @@ import android.support.test.runner.AndroidJUnit4;
 import com.example.gabrielmoro.baking_app.R;
 import com.example.gabrielmoro.baking_app.ui.recipe_detail_screen.RecipeDetailActivity;
 
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -35,7 +37,6 @@ public class MainExpressTest {
     public void selectTheFirstRecipeToShowTheIngredients() {
         onView(withId(R.id.rvRecipes)).perform(RecyclerViewActions.actionOnItemAtPosition(0, click()));
         onView(withId(R.id.rvIngredients)).check(matches(isDisplayed()));
-        detailActivity.finishActivity();
     }
 
     @Test
@@ -49,7 +50,6 @@ public class MainExpressTest {
     public void selectTheSecondRecipeToShowTheIngredients() {
         onView(withId(R.id.rvRecipes)).perform(RecyclerViewActions.actionOnItemAtPosition(1, click()));
         onView(withId(R.id.rvIngredients)).check(matches(isDisplayed()));
-        detailActivity.finishActivity();
     }
 
     @Test

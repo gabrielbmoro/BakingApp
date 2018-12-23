@@ -10,7 +10,9 @@ import com.example.gabrielmoro.baking_app.ui.main_screen.MainActivity;
 import com.example.gabrielmoro.baking_app.ui.recipe_step_detail_screen.RecipeStepDetailActivity;
 
 import org.junit.After;
+import org.junit.AfterClass;
 import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -36,6 +38,7 @@ public class RecipeDetailExpressTest {
     @Rule
     public ActivityTestRule<RecipeStepDetailActivity> stepDetailActivity = new ActivityTestRule<>(RecipeStepDetailActivity.class);
 
+
     @Before
     public void setup() {
         onView(withId(R.id.rvRecipes)).perform(RecyclerViewActions.actionOnItemAtPosition(0, click()));
@@ -53,8 +56,9 @@ public class RecipeDetailExpressTest {
         onView(withId(R.id.flMediaPlayerAndDescription)).check(matches(isDisplayed()));
     }
 
+
     @After
-    public void after() {
+    public void onDestroyEachMethod() {
         stepDetailActivity.finishActivity();
         recipeDetailActivity.finishActivity();
     }
