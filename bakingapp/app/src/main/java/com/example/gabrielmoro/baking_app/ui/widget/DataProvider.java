@@ -10,6 +10,9 @@ import com.example.gabrielmoro.baking_app.R;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Reference: https://www.programcreek.com/java-api-examples/?code=mgilangjanuar/GoSCELE/GoSCELE-master/app/src/main/java/com/mgilangjanuar/dev/goscele/modules/widget/view/ScheduleDailyWidget.java#
+ */
 public class DataProvider implements RemoteViewsService.RemoteViewsFactory {
 
     private Context context;

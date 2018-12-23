@@ -12,6 +12,7 @@ import com.example.gabrielmoro.baking_app.R;
 
 /**
  * Implementation of App Widget functionality.
+ * Reference: https://www.programcreek.com/java-api-examples/?code=mgilangjanuar/GoSCELE/GoSCELE-master/app/src/main/java/com/mgilangjanuar/dev/goscele/modules/widget/view/ScheduleDailyWidget.java#
  */
 public class RecipeListWidget extends AppWidgetProvider {
 
