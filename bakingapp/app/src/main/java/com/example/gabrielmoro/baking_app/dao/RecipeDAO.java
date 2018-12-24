@@ -5,6 +5,9 @@ import com.example.gabrielmoro.baking_app.model.Recipe;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * This class is used by Widget Provider after the retrofit request.
+ */
 public class RecipeDAO {
 
     private static RecipeDAO myInstance;
