@@ -6,6 +6,8 @@ import android.widget.RemoteViews;
 import android.widget.RemoteViewsService;
 
 import com.example.gabrielmoro.baking_app.R;
+import com.example.gabrielmoro.baking_app.dao.RecipeDAO;
+import com.example.gabrielmoro.baking_app.model.Recipe;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,22 +18,15 @@ import java.util.List;
 public class DataProvider implements RemoteViewsService.RemoteViewsFactory {
 
     private Context context;
-    private List<String> list;
+    private List<Recipe> list;
 
     DataProvider(Context contextArgument) {
         context = contextArgument;
-        list = new ArrayList<>();
+        list = RecipeDAO.getMyInstance().all();
     }
 
     @Override
     public void onCreate() {
-        list.add("Teste 1");
-        list.add("Teste 2");
-        list.add("Teste 3");
-        list.add("Teste 4");
-        list.add("Teste 5");
-        list.add("Teste 6");
-        list.add("Teste 7");
     }
 
     @Override
@@ -55,7 +50,7 @@ public class DataProvider implements RemoteViewsService.RemoteViewsFactory {
     @Override
     public RemoteViews getViewAt(int position) {
         RemoteViews remoteViews = new RemoteViews(context.getPackageName(), R.layout.widget_list_item);
-        remoteViews.setTextViewText(R.id.tvItem, list.get(position));
+        remoteViews.setTextViewText(R.id.tvItem, list.get(position).getName());
         return remoteViews;
     }
 

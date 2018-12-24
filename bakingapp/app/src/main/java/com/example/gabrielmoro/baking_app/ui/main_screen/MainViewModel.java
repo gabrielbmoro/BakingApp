@@ -6,6 +6,7 @@ import android.support.annotation.NonNull;
 
 import com.example.gabrielmoro.baking_app.api.APICallBackResult;
 import com.example.gabrielmoro.baking_app.api.APIRetrofitHandler;
+import com.example.gabrielmoro.baking_app.dao.RecipeDAO;
 import com.example.gabrielmoro.baking_app.model.Recipe;
 import com.example.gabrielmoro.baking_app.ui.main_screen.adapter.RecipeAdapterList;
 import com.example.gabrielmoro.baking_app.ui.main_screen.adapter.RecipeItemViewModel;
@@ -45,6 +46,7 @@ public class MainViewModel extends ViewModel {
             public void onSucess(List<Recipe> result) {
                 if (result != null) {
                     recipes.postValue(result);
+                    RecipeDAO.getMyInstance().save(result);
                     Timber.d("onSucess: %s", result.toString());
                 }
             }
