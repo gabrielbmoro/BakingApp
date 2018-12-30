@@ -33,6 +33,11 @@ public class MainExpressTest {
     @Rule
     public ActivityTestRule<RecipeDetailActivity> detailActivity = new ActivityTestRule<>(RecipeDetailActivity.class);
 
+    @Before
+    public void setup() {
+        waitFor(1000);
+    }
+
     @Test
     public void selectTheFirstRecipeToShowTheIngredients() {
         onView(withId(R.id.rvRecipes)).perform(RecyclerViewActions.actionOnItemAtPosition(0, click()));
@@ -57,6 +62,14 @@ public class MainExpressTest {
         onView(withId(R.id.rvRecipes)).perform(RecyclerViewActions.actionOnItemAtPosition(1, click()));
         onView(withId(R.id.rvSteps)).check(matches(isDisplayed()));
         detailActivity.finishActivity();
+    }
+
+    private void waitFor(long milisseconds) {
+        try {
+            Thread.sleep(milisseconds);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
 }

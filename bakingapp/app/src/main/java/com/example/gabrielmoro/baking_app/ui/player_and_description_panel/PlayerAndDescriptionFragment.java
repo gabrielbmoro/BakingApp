@@ -3,6 +3,7 @@ package com.example.gabrielmoro.baking_app.ui.player_and_description_panel;
 import android.arch.lifecycle.ViewModelProviders;
 import android.databinding.DataBindingUtil;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.support.annotation.NonNull;
@@ -74,17 +75,38 @@ public class PlayerAndDescriptionFragment extends Fragment {
     }
 
     @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-        changeVideoURL();
+    public void onStart() {
+        super.onStart();
+        if(Build.VERSION.SDK_INT > Build.VERSION_CODES.M) initializePlayer();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.M || mPlayer == null) {
+            initializePlayer();
+        }
     }
 
     /**
-     * Reference: https://medium.com/s23nyc-tech/drop-in-android-video-exoplayer2-with-picture-in-picture-e2d4f8c1eb30
+     * If the version is less or equal to Marshmallow, the player will be released in onPause method.
      */
     @Override
-    public void onDestroy() {
-        super.onDestroy();
+    public void onPause() {
+        super.onPause();
+        if(Build.VERSION.SDK_INT <= Build.VERSION_CODES.M) releasePlayer();
+    }
+
+    /**
+     * If the version is greater than Marshmallow, the player will be released in onStop method.
+     */
+    @Override
+    public void onStop() {
+        super.onStop();
+        if(Build.VERSION.SDK_INT > Build.VERSION_CODES.M) releasePlayer();
+    }
+
+    private void releasePlayer() {
         binding.cvmedia.setPlayer(null);
         mPlayer.release();
     }
@@ -107,7 +129,7 @@ public class PlayerAndDescriptionFragment extends Fragment {
     /**
      * Reference: https://google.github.io/ExoPlayer/guide.html
      */
-    public void changeVideoURL() {
+    public void initializePlayer() {
         mPlayer = ExoPlayerFactory.newSimpleInstance(getContext());
         // Produces DataSource instances through which media data is loaded.
         DataSource.Factory dataSourceFactory = new DefaultDataSourceFactory(Objects.requireNonNull(getContext()),

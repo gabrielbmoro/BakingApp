@@ -41,6 +41,7 @@ public class RecipeDetailExpressTest {
 
     @Before
     public void setup() {
+        waitFor(1000);
         onView(withId(R.id.rvRecipes)).perform(RecyclerViewActions.actionOnItemAtPosition(0, click()));
     }
 
@@ -61,6 +62,14 @@ public class RecipeDetailExpressTest {
     public void onDestroyEachMethod() {
         stepDetailActivity.finishActivity();
         recipeDetailActivity.finishActivity();
+    }
+
+    private void waitFor(long milisseconds) {
+        try {
+            Thread.sleep(milisseconds);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
 }

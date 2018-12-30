@@ -9,6 +9,6 @@ import android.widget.RemoteViewsService;
 public class DataProvidesService extends RemoteViewsService {
     @Override
     public RemoteViewsFactory onGetViewFactory(Intent intent) {
-        return new DataProvider(getBaseContext());
+        return new DataAdapterWidget(getBaseContext());
     }
 }
