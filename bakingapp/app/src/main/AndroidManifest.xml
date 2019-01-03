@@ -27,7 +27,7 @@
             android:configChanges="orientation|screenSize|keyboardHidden"
             android:parentActivityName=".ui.recipe_detail_screen.RecipeDetailActivity" />
 
-        <receiver android:name=".ui.widget.RecipeListWidget">
+        <receiver android:name=".ui.widget.RecipeListWidgetProvider">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
             </intent-filter>
@@ -38,7 +38,7 @@
         </receiver>
 
         <service
-            android:name=".ui.widget.DataProvidesService"
+            android:name=".ui.widget.RecipeListWidgetService"
             android:permission="android.permission.BIND_REMOTEVIEWS" />
     </application>
 
