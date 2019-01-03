@@ -16,6 +16,7 @@ import java.util.List;
 
 /**
  * Reference: https://www.programcreek.com/java-api-examples/?code=mgilangjanuar/GoSCELE/GoSCELE-master/app/src/main/java/com/mgilangjanuar/dev/goscele/modules/widget/view/ScheduleDailyWidget.java#
+ * Reference: https://codinginflow.com/tutorials/android/app-widget/part-5-collection-view-click-behavior
  */
 public class RecipeListWidgetService extends RemoteViewsService {
     @Override
@@ -53,6 +54,11 @@ public class RecipeListWidgetService extends RemoteViewsService {
             return list.size();
         }
 
+        /**
+         * Reference: https://codinginflow.com/tutorials/android/app-widget/part-5-collection-view-click-behavior
+         * @param position
+         * @return
+         */
         @Override
         public RemoteViews getViewAt(int position) {
             RemoteViews remoteViews = new RemoteViews(context.getPackageName(), R.layout.widget_list_item);
