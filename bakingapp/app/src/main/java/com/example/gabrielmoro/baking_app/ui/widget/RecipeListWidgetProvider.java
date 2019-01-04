@@ -3,6 +3,7 @@ package com.example.gabrielmoro.baking_app.ui.widget;
 import android.app.PendingIntent;
 import android.appwidget.AppWidgetManager;
 import android.appwidget.AppWidgetProvider;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
@@ -21,7 +22,6 @@ public class RecipeListWidgetProvider extends AppWidgetProvider {
 
     public static final String ACTION_CLICK = "action click";
     public static final String EXTRA_ITEM_POSITION = "extraItemPosition";
-
 
     @Override
     public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds) {
@@ -64,9 +64,24 @@ public class RecipeListWidgetProvider extends AppWidgetProvider {
             WidgetItem itemTarget = WidgetItemDAO.getMyInstance().all().get(position);
             if (itemTarget != null) {
                 itemTarget.setIngredientsVisibility(!itemTarget.isIngredientsVisibility());
+
+                AppWidgetManager appWidgetManager = AppWidgetManager.getInstance(context.getApplicationContext());
+                ComponentName thisWidget = new ComponentName(context.getApplicationContext(), RecipeListWidgetProvider.class);
+                int[] appWidgetIds = appWidgetManager.getAppWidgetIds(thisWidget);
+                if (appWidgetIds != null && appWidgetIds.length > 0) {
+                    Intent serviceIntent = new Intent(context, RecipeListWidgetService.class);
+                    serviceIntent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetIds);
+                    serviceIntent.setData(Uri.parse(serviceIntent.toUri(Intent.URI_INTENT_SCHEME)));
+                    RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.recipe_list_widget);
+                    views.setRemoteAdapter(R.id.lvWidgetItems, serviceIntent);
+                    for (int appWidgetId : appWidgetIds)
+                        appWidgetManager.updateAppWidget(appWidgetId, views);
+                }
             }
         }
         super.onReceive(context, intent);
     }
+
+
 }
 

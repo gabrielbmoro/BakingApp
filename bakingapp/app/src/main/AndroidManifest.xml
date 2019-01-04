@@ -28,8 +28,13 @@
             android:parentActivityName=".ui.recipe_detail_screen.RecipeDetailActivity" />
 
         <receiver android:name=".ui.widget.RecipeListWidgetProvider">
+
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <intent-filter>
+                <action android:name="android.media.RINGER_MODE_CHANGED" />
             </intent-filter>
 
             <meta-data
