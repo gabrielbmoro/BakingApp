@@ -2,7 +2,7 @@ package com.example.gabrielmoro.baking_app;
 
 import android.app.Application;
 
-import com.example.gabrielmoro.baking_app.dao.RecipeDAO;
+import com.example.gabrielmoro.baking_app.dao.WidgetItemDAO;
 
 public class BakingApplication extends Application {
 
@@ -15,6 +15,6 @@ public class BakingApplication extends Application {
     public void onTerminate() {
         super.onTerminate();
 
-        RecipeDAO.getMyInstance().destroyAllInstances();
+        WidgetItemDAO.getMyInstance().destroyAllInstances();
     }
 }
