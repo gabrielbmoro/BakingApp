@@ -56,6 +56,9 @@ public class RecipeListWidgetProvider extends AppWidgetProvider {
         // Enter relevant functionality for when the last widget is disabled
     }
 
+    /**
+     * Reference: https://stackoverflow.com/questions/21220717/android-my-app-widget-with-listview-is-not-updating-via-button-or-update-period
+     */
     @Override
     public void onReceive(Context context, Intent intent) {
         if (ACTION_CLICK.equals(intent.getAction())) {
@@ -69,13 +72,7 @@ public class RecipeListWidgetProvider extends AppWidgetProvider {
                 ComponentName thisWidget = new ComponentName(context.getApplicationContext(), RecipeListWidgetProvider.class);
                 int[] appWidgetIds = appWidgetManager.getAppWidgetIds(thisWidget);
                 if (appWidgetIds != null && appWidgetIds.length > 0) {
-                    Intent serviceIntent = new Intent(context, RecipeListWidgetService.class);
-                    serviceIntent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetIds);
-                    serviceIntent.setData(Uri.parse(serviceIntent.toUri(Intent.URI_INTENT_SCHEME)));
-                    RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.recipe_list_widget);
-                    views.setRemoteAdapter(R.id.lvWidgetItems, serviceIntent);
-                    for (int appWidgetId : appWidgetIds)
-                        appWidgetManager.updateAppWidget(appWidgetId, views);
+                    appWidgetManager.notifyAppWidgetViewDataChanged(appWidgetIds, R.id.lvWidgetItems);
                 }
             }
         }
